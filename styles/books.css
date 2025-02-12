@@ -1,0 +1,76 @@
+/* 📚 Buch-Tabelle */
+.book-table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.book-table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-table th, .book-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.book-table th {
+    background: #222;
+    color: white;
+    text-align: left;
+}
+
+.book-cover {
+    width: 60px; /* Größe des Covers */
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Anpassung der ersten Spalte, damit Bild und Text korrekt ausgerichtet sind */
+.book-table td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Abstand zwischen Bild und Text */
+}
+
+.book-title {
+    display: flex;
+    flex-direction: column;
+}
+
+/*.book-tag {
+    display: inline-block;
+    background: #f7931a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}*/
+
+.book-table a {
+    color: #f7931a; /* Bitcoin-Orange */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.book-table a:hover {
+    text-decoration: underline;
+}
+
+.book-author {
+    color: #6d6d6d;
+}
+
+.book-categories {
+    color: #6d6d6d;
+}

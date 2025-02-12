@@ -1,0 +1,1099 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Höhe reduzieren */
+    font-size: 16px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+header p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+nav {
+    background: #444;
+    padding: 8px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+}
+
+/* Stellt sicher, dass das Dropdown sich relativ zum übergeordneten <li> positioniert */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown-Styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Direkt unter "Tutorials" */
+    left: 0;
+    background-color: #333;
+    min-width: 200px;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 10px 15px;
+    display: block;
+    color: white;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f7931a; /* Bitcoin-Orange */
+}
+
+/* Dropdown-Menü anzeigen, wenn Hover über "Tutorials" */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+nav ul li a.active {
+    color: #f7931a !important; /* Bitcoin-Orange */
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+article {
+    background: white;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+footer nav ul li a {
+    color: #f7931a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#info-ticker {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+}
+
+#info-ticker div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#info-ticker strong {
+    color: #f7931a;
+}
+
+#ticker-container, #info-ticker {
+    margin: 0;
+    padding: 0;
+    height: auto; /* Falls er vorher eine fixe Höhe hatte */
+    min-height: unset; /* Entfernt eventuell gesetzte Mindesthöhen */
+}
+
+#ticker-container:empty, #info-ticker:empty {
+    display: none;
+}
+
+/* 🌙 Dark-Mode für den Blog */
+.blog-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f7931a;
+    margin-bottom: 1.5rem;
+    
+}
+
+.blog-container {
+    display: flex;
+    gap: 1rem; /* Weniger Abstand zwischen den Cards */
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 6vw; /* Reduziere linken und rechten Abstand */
+}
+
+.blog-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+.blog-card-heading {
+    color: #292626;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.blog-info {
+    padding: 1rem;
+    color: #e0e0e0;
+}
+
+.blog-date {
+    font-size: 0.9rem;
+    color: #aaa;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.blog-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #161616;
+}
+
+.blog-info p {
+    font-size: 1rem;
+    color: #474747;
+}
+
+.blog-read-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #f7931a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.blog-read-more:hover {
+    color: #ffae42;
+}
+
+.blog-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-card a {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Verhindert, dass der Text blau wird */
+}
+
+/* 🟠 Blog Hero Image */
+.blog-hero {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.blog-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.blog-hero-text {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    color: #fff;
+}
+
+.blog-meta {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* 🟠 Call-to-Action Buttons */
+.blog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.cta-button {
+    background-color: #f7931a;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ff9f29;
+}
+
+/* 🟠 Blog Layout */
+.blog-content {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    gap: 30px;
+}
+
+.blog-article {
+    width: 70%;
+}
+
+.blog-sidebar {
+    width: 30%;
+    background: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.blog-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.blog-sidebar ul li {
+    padding: 5px 0;
+}
+
+.blog-sidebar ul li a {
+    color: #f7931a;
+    text-decoration: none;
+}
+
+.blog-sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 🟠 Hervorgehobenes Zitat */
+.highlight-quote {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    border-left: 4px solid #f7931a;
+    font-style: italic;
+    margin: 20px 0;
+}
+
+/* 🟠 Autor-Box */
+.author-box {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
+.author-box img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* 🟠 Kommentare */
+.comments {
+    margin-top: 50px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 5px;
+}
+
+.comment {
+    background: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-left: 3px solid #f7931a;
+}
+
+.post-thumbnail {
+    max-width: 80%;  /* Das Bild wird maximal 80% der Artikelbreite */
+    height: auto;  /* Beibehaltung des Seitenverhältnisses */
+    display: block;  /* Damit `margin: auto;` funktioniert */
+    margin: 20px auto;  /* Zentrierung mit Abstand */
+    border-radius: 8px;  /* Abgerundete Ecken für schöneres Design */
+}
+
+/* ✅ Artikel-Container breiter machen */
+.article-container {
+    max-width: 1000px;  /* Erhöhte maximale Breite */
+    width: 90%;  /* Anpassbar für kleinere Screens */
+    margin: 40px auto;  /* Zentriert den Artikel */
+}
+
+/* ✅ Artikel-Box (weißer Hintergrund mit Padding & Schatten) */
+.article-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 15000px;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Artikel-Bild */
+.article-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.article-thumbnail {
+    max-width: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.article-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* ✅ Zurück-Link */
+.back-link {
+    margin-top: 20px;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: #f7931a;
+    font-weight: bold;
+}
+
+.image-container {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.image-caption {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Inhaltsverzeichnis Styling */
+.toc-container {
+    position: absolute;
+    top: 0;
+    left: 20px; /* Bleibt immer links */
+    width: 240px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: top 0.2s ease-out;
+}
+
+/* Fixierte Position beim Scrollen */
+.fixed-toc {
+    position: absolute !important;
+    left: 20px !important;
+    transition: top 0.2s ease-out;
+}
+
+/* Inhaltsverzeichnis stoppt beim Footer */
+.bottom-toc {
+    position: absolute !important;
+    left: 20px !important;
+}
+
+/* Hierarchische Struktur */
+.toc-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-container li {
+    margin-left: 15px;
+    font-size: 13px;
+}
+
+.toc-container a {
+    text-decoration: none;
+    color: #f7931a;
+    display: block;
+    padding: 3px 0;
+}
+
+.toc-container a:hover {
+    color: #d17a0d; /* Dunkleres Orange beim Hover */
+    text-decoration: underline;
+}
+
+/* Verschachtelung für H2 und H3 */
+.toc-container ul ul {
+    padding-left: 15px;
+    font-size: 12px;
+}
+
+/* Active ScrollSpy */
+.toc-container li.active a {
+    font-weight: bold;
+    color: #d17600;
+}
+
+/* Stoppt das ToC, bevor es in den Footer geht */
+.toc-stop {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+}
+
+/* Artikel-Container anpassen */
+.article-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 40px auto;
+    /*padding-left: 280px; /* Platz für das Inhaltsverzeichnis */
+    position: relative; /* Stellt sicher, dass .toc-container sich daran ausrichtet */
+}
+
+.blog-tags {
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.blog-tags .tag {
+    background-color: #f7931a;
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+/* Farbe für markierten Text (statt Blau -> leichtes Orange) */
+::selection {
+    background: #f7b456; /* Helles Orange */
+    color: #222; /* Dunkler Text für Kontrast */
+}
+
+/* Für Firefox */
+::-moz-selection {
+    background: #f7b456; /* Helles Orange */
+    color: #222;
+}
+
+.resource-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+    align-items: stretch;
+}
+
+.resource-category {
+    flex: 1 1 calc(50% - 20px);
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+}
+
+.resource-category h3 {
+    margin-top: 0;
+}
+
+.resource-category ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resource-category li {
+    margin: 5px 0;
+}
+
+.resource-category a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.resource-category a:hover {
+    text-decoration: underline;
+}
+
+/* Einzelne Ressourcenelemente */
+.resource-item {
+    margin-bottom: 15px;
+}
+
+.resource-item a {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.resource-item a:hover {
+    text-decoration: underline;
+}
+
+.resource-item p {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Mobilansicht: Einspaltiges Layout */
+@media (max-width: 768px) {
+    .resource-category {
+        flex: 1 1 100%;
+    }
+}
+
+#ticker-container {
+    margin: 0;
+    padding: 0;
+    height: auto; /* Falls er vorher eine fixe Höhe hatte */
+    min-height: unset; /* Entfernt eventuell gesetzte Mindesthöhen */
+}
+
+#ticker-container:empty {
+    display: none;
+}
+
+#ticker-link {
+    text-decoration: none; /* Kein Unterstrich */
+    color: inherit; /* Gleiche Farbe wie der umgebende Text */
+}
+
+#ticker-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stellt sicher, dass der Footer immer unten ist, wenn der Content zu wenig Höhe hat */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#content {
+    flex: 1; /* Der Hauptinhalt füllt den verfügbaren Platz */
+}
+
+/* Der Footer bleibt unten, wenn der Content nicht ausreicht */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.donation-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.donation-method {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column; /* Stellt sicher, dass Inhalte gestreckt werden */
+    justify-content: space-between; /* Verteilt den Inhalt gleichmäßig */
+}
+
+.donation-method h2 {
+    color: #f7931a;
+}
+
+.donation-qr {
+    width: 180px;
+    height: 180px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.donation-address {
+    font-size: 14px;
+    word-break: break-all;
+    color: #333;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: monospace;
+}
+
+.welcome {
+    /*display: none;  Falls komplett entfernen */
+    /* Alternativ: Hintergrundfarbe ändern, wenn behalten */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 🎯 Neuste Artikel Sektion */
+.latest-articles {
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.article-item {
+    flex: 1 1 calc(50% - 10px);
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.article-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.article-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 💰 Bitcoin Live-Daten Styling */
+.btc-info {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btc-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btc-stats p {
+    font-size: 16px;
+    background: #1c1c1c;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ✅ Responsive Fix für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .article-item {
+        flex: 1 1 100%;
+    }
+
+    .btc-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.index-resource-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Abstand zwischen den Boxen */
+    max-width: 85%; /* Die Breite auf 85% des Containers begrenzen */
+    margin: 0 auto; /* Zentrieren */
+    flex-wrap: wrap;
+    align-items: stretch; /* Stellt sicher, dass alle Elemente gleich hoch sind */
+}
+
+.index-resource-item {
+    flex: 1 1 calc(30% - 20px); /* Breite der einzelnen Boxen begrenzen */
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 250px; /* Mindestbreite für kleinere Bildschirme */
+    max-width: 420px; /* Maximale Breite pro Box */
+    justify-content: space-between; /* Verteilt die Inhalte gleichmäßig */
+}
+
+.index-resource-item p {
+    text-align: center;
+}
+
+.cta-button {
+    display: block;
+    text-align: center;
+    background: #f7931a;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.cta-button:hover {
+    background: #ff9f29;
+}
+
+.quote-of-the-day {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    color: #222;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.latest-articles {
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.article-item {
+    flex: 1 1 calc(33% - 20px);
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.article-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.article-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.article-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+#footer-container {
+    margin-top: 30px; /* Fügt Abstand über dem Footer hinzu */
+}
+
+/* Container für den Inhalt */
+.content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Vergleichstabelle */
+.comparison-table {
+    width: 90%; /* Statt 100%, damit es nicht komplett den Bildschirm füllt */
+    max-width: 1100px; /* Maximale Breite, damit es nicht zu breit wird */
+    margin: 20px auto; /* Zentriert die Tabelle */
+    border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table th, .comparison-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.comparison-table th {
+    background-color: #333;
+    color: white;
+}
+
+.comparison-table td {
+    font-size: 1em;
+}
+
+/* Farbcodes */
+.green {
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: bold;
+}
+
+.yellow {
+    background-color: #fff3cd;
+    color: #856404;
+    font-weight: bold;
+}
+
+.red {
+    background-color: #f8d7da;
+    color: #721c24;
+    font-weight: bold;
+}
+
+/* Container für den Inhalt */
+.content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Überschriften */
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.comparison-table {
+    width: 100%; /* Stelle sicher, dass die Tabelle immer die volle Breite einnimmt */
+    max-width: 1100px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    table-layout: fixed; /* Verhindert ein späteres Resizing */
+}
+
+.comparison-table th, .comparison-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.comparison-table th {
+    background-color: #333;
+    color: white;
+}
+
+.comparison-table td {
+    font-size: 1em;
+}
+
+/* Farbcodes */
+.green {
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: bold;
+}
+
+.yellow {
+    background-color: #fff3cd;
+    color: #856404;
+    font-weight: bold;
+}
+
+.red {
+    background-color: #f8d7da;
+    color: #721c24;
+    font-weight: bold;
+}
+
+section p {
+    text-align: left;
+}
+
+section h2 {
+    text-align: left;
+}
+
+.article-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.green { background-color: #c3e6cb; }
+.yellow { background-color: #ffeeba; }
+.red { background-color: #f5c6cb; }
+
+.article-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ff9900;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cta-button-big {
+    display: block; /* Block-Level für volle Breite */
+    width: fit-content; /* Passt die Breite an den Inhalt an */
+    margin: 20px auto; /* Automatische horizontale Zentrierung */
+    padding: 10px 20px;
+    background: #ff9900;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center; /* Text innerhalb des Buttons zentrieren */
+}
+section p {
+    text-align: left;
+}
+
+section h2 {
+    text-align: left;
+}
+
+.comparison-table {
+    width: 100%; /* Stelle sicher, dass die Tabelle immer die volle Breite einnimmt */
+    max-width: 1100px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    table-layout: fixed; /* Verhindert ein späteres Resizing */
+}
+
+#text-center {
+    text-align: center !important;
+}
+
+#daily-quote p, cite {
+    text-align: center !important;
+}
+
+.article-box h1 {
+    text-align: left;
+}

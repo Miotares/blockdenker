@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spenden – Blockdenker</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/spenden.css"> <!-- Korrekte Einbindung -->
+    <script defer src="../scripts/scripts.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="article-container">
+            <article class="article-box">
+                <h1>Unterstütze Blockdenker mit einer Spende</h1>
+                <p>Falls dir unsere Inhalte gefallen und du unsere Arbeit unterstützen möchtest, kannst du uns gerne eine Spende senden. Vielen Dank! 🙏</p>
+
+                <div class="donation-container">
+
+                    <!-- Bitcoin On-Chain -->
+                    <div class="donation-method">
+                        <h2>Bitcoin (On-Chain)</h2>
+                        <img src="../images/bitcoin-onchain-qr.png" alt="Bitcoin On-Chain QR-Code" class="donation-qr">
+                        <p class="donation-address" onclick="copyToClipboard(this)">bc1qg8mlk9qwetver34lmefvvls4w4pzu0skljsrx0</p>
+                    </div>
+
+                    <!-- Bitcoin Lightning -->
+                    <div class="donation-method">
+                        <h2>Bitcoin (Lightning)</h2>
+                        <img src="../images/bitcoin-lightning-qr.jpeg" alt="Bitcoin Lightning QR-Code" class="donation-qr">
+                        <p class="donation-address" onclick="copyToClipboard(this)">staunchshow94@walletofsatoshi.com</p>
+                    </div>
+
+                    <!-- Monero -->
+                    <div class="donation-method">
+                        <h2>Monero (XMR)</h2>
+                        <img src="../images/monero-qr.png" alt="Monero QR-Code" class="donation-qr">
+                        <p class="donation-address" onclick="copyToClipboard(this)">48grL5h2iscQ5ebNiBruPj4NjJxSxcLVs229TraXWLshYMnjP6nsmYHQdKVKFbtsGi1odVdQXSkLjX7ZT2Stdvi2TuBtbhp</p>
+                    </div>
+
+                </div>
+
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        function copyToClipboard(element) {
+            const text = element.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Adresse kopiert: " + text);
+            }).catch(err => {
+                console.error("Fehler beim Kopieren:", err);
+            });
+        }
+    </script>
+
+</body>
+</html>
