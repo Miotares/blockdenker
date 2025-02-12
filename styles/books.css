@@ -74,3 +74,55 @@
 .book-categories {
     color: #6d6d6d;
 }
+
+/* 📱 MOBILE-OPTIMIERUNG */
+@media (max-width: 768px) {
+    .book-table-container {
+        overflow-x: auto; /* Falls nötig, horizontales Scrollen */
+    }
+
+    /* Header bleibt in voller Breite */
+    .book-table th {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Zeilen in einzelne Blöcke umwandeln */
+    .book-table tr {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    /* Spalten in Mobile untereinander */
+    .book-table td {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Buchcover mittig anzeigen */
+    .book-table td:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .book-cover {
+        width: 100px; /* Größer auf Mobile */
+        max-width: 140px;
+        margin-bottom: 10px;
+    }
+
+    /* Beschreibung auf voller Breite */
+    .book-table td:last-child {
+        width: 100%;
+        text-align: center;
+    }
+}

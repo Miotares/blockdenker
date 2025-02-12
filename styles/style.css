@@ -927,7 +927,8 @@ footer {
 }
 
 .comparison-table td {
-    font-size: 1em;
+    font-size: 14px !important;
+    font-weight: bold !important;
 }
 
 /* Farbcodes */
@@ -1037,6 +1038,7 @@ section h2 {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
+    word-wrap: break-word;
 }
 
 .green { background-color: #c3e6cb; }
