@@ -252,18 +252,57 @@ function initSeamlessNavigation() {
     document.body.addEventListener("click", async (event) => {
         const target = event.target.closest("a");
 
-        if (target && target.href && target.origin === window.location.origin) {
+        if (!target || !target.href) return;
+
+        const isSamePageAnchor = target.hash && target.pathname === window.location.pathname;
+        const isInternalLink = target.origin === window.location.origin;
+
+        if (isSamePageAnchor) {
+            // ⚠️ Wenn es ein Anker auf der selben Seite ist, mach nichts, der Browser soll das machen
+            return;
+        }
+
+        if (isInternalLink) {
             event.preventDefault();
-            const url = target.pathname;
-
-            // **Navigation direkt aktualisieren, bevor die Seite geladen wird**
-            setActiveNav();
-
-            // Verhindere Neuladen der Seite
+            const url = target.pathname + target.search + target.hash;
             await loadPage(url);
         }
     });
 }
+
+function generateTableOfContents() {
+    const tocContainer = document.getElementById('table-of-contents');
+    if (!tocContainer) return;
+
+    // Nur Überschriften innerhalb der Artikelbox holen!
+    const articleBox = document.querySelector('.article-box');
+    if (!articleBox) return;
+
+    const headings = articleBox.querySelectorAll('h1, h2');
+    const tocList = document.createElement('ul');
+
+    const isFolderUrl = !window.location.href.endsWith('index.html');
+
+    headings.forEach((heading, index) => {
+        if (!heading.id) {
+            heading.id = 'heading-' + (index + 1);
+        }
+
+        const tocItem = document.createElement('li');
+        tocItem.classList.add(heading.tagName.toLowerCase() === 'h2' ? 'toc-level-2' : 'toc-level-1');
+
+        const tocLink = document.createElement('a');
+        tocLink.href = (isFolderUrl ? 'index.html' : '') + '#' + heading.id;
+        tocLink.textContent = heading.textContent;
+
+        tocItem.appendChild(tocLink);
+        tocList.appendChild(tocItem);
+    });
+
+    tocContainer.innerHTML = ''; // Vorherigen Inhalt leeren (falls mehrfach generiert wird)
+    tocContainer.appendChild(tocList);
+}
+document.addEventListener("DOMContentLoaded", generateTableOfContents);
 
 window.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
@@ -290,6 +329,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetchBitcoinData(); // Bitcoin-Daten abrufen
     setActiveNav(); // Navigation setzen
     initSeamlessNavigation(); // Nahtlose Navigation aktivieren
+    generateTableOfContents();
 
     document.body.classList.add('loaded');
 });

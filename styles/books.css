@@ -126,3 +126,7 @@
         text-align: center;
     }
 }
+
+.books-table thead {
+    display: none;
+}

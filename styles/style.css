@@ -438,7 +438,7 @@ footer nav ul li a:hover {
 
 /* ✅ Zurück-Link */
 .back-link {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .back-link a {
@@ -700,6 +700,9 @@ footer {
     max-width: 500px;
     flex-direction: column; /* Stellt sicher, dass Inhalte gestreckt werden */
     justify-content: space-between; /* Verteilt den Inhalt gleichmäßig */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .donation-method h2 {
@@ -709,9 +712,9 @@ footer {
 .donation-qr {
     width: 180px;
     height: 180px;
-    margin: 10px auto;
+    margin: 0 auto; /* Zentriert horizontal */
     display: block;
-    border-radius: 5px;
+    border-radius: 5px;    
 }
 
 .donation-address {
@@ -922,7 +925,7 @@ footer {
 }
 
 .comparison-table th {
-    background-color: #333;
+    background-color: #284453;
     color: white;
 }
 
@@ -980,7 +983,7 @@ h1 {
 }
 
 .comparison-table th {
-    background-color: #333;
+    background-color: #284453;
     color: white;
 }
 
@@ -1288,7 +1291,7 @@ header {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #0f172a; /* Hintergrundfarbe anpassen */
+    background-color: #1a2c36; /* Hintergrundfarbe anpassen */
     color: white;
     display: flex;
     align-items: center;
@@ -1299,4 +1302,102 @@ header {
 
 body.loaded #preloader {
     display: none;
+}
+
+.book-table thead {
+    display: none;
+}
+
+
+
+
+.article-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+}
+
+.toc-container {
+    position: sticky;
+    top: 20px; /* Statt 20px */
+    width: 300px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    height: fit-content;
+    align-self: flex-start; /* Damit es oben bündig ist */
+}
+
+
+.toc-container h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.toc-container ul {
+    list-style: none;
+    padding-left: 0; /* Entfernt den Standard-Innenabstand */
+    margin-left: 0;  /* Entfernt eventuelle Standard-Margins */
+}
+
+.toc-container li {
+    margin-left: 0; /* Setzt die Hauptüberschriften auf gleiche Linie wie "Inhaltsverzeichnis" */
+}
+
+.toc-level-1 a {
+    margin-left: 0; /* H1 bündig */
+    padding-left: 0; /* Kein zusätzlicher Abstand */
+}
+
+.toc-level-2 a {
+    margin-left: 15px; /* H2 leicht eingerückt */
+    padding-left: 0;
+}
+
+.toc-container a {
+    text-decoration: none;
+    color: #f7931a;
+    font-size: 0.95em;
+}
+
+.toc-container a:hover {
+    text-decoration: underline;
+}
+
+.article-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.article-box {
+    flex-grow: 1;
+    background: #fff;
+    padding: 30px;
+    width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+}
+
+@media (max-width: 768px) {
+    .toc-container {
+        display: none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1::before, h2::before {
+    content: '';
+    display: block;
+    height: 80px; /* Je nach Header-Größe */
+    margin-top: -80px;
+    visibility: hidden;
 }
