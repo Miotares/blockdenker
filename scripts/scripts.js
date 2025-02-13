@@ -152,23 +152,23 @@ function setActiveNav(path = window.location.pathname) {
         let linkPath = new URL(link.href, window.location.origin).pathname;
 
         // 🔹 Falls die Seite exakt übereinstimmt oder eine Unterseite der Hauptkategorie ist
-        if (path === linkPath || path.startsWith(linkPath.replace(".html", ""))) {
+        if (path === linkPath || path === linkPath + 'index.html' || path === linkPath.slice(0, -1)) {
             link.classList.add("active");
             console.log(`✅ Aktiv: ${linkPath}`);
         }
     });
 
-    // 🔹 Erkenne auch Unterseiten (z. B. /pages/resources/books.html → Markiere Ressourcen)
+    // 🔹 Erkenne auch Unterseiten anhand der Ordnerstruktur (z. B. /pages/resources/books/ → Markiere Ressourcen)
     navLinks.forEach(link => {
         let linkPath = new URL(link.href, window.location.origin).pathname;
 
-        if (path.includes("/pages/resources/") && linkPath.endsWith("resources.html")) {
+        if (path.startsWith("/pages/resources/") && linkPath.endsWith("/resources/")) {
             link.classList.add("active");
-        } else if (path.includes("/pages/articles/") && linkPath.endsWith("articles.html")) {
+        } else if (path.startsWith("/pages/articles/") && linkPath.endsWith("/articles/")) {
             link.classList.add("active");
-        } else if (path.includes("/pages/tutorials/") && linkPath.endsWith("tutorials.html")) {
+        } else if (path.startsWith("/pages/tutorials/") && linkPath.endsWith("/tutorials/")) {
             link.classList.add("active");
-        } else if (path.includes("/pages/spenden/") && linkPath.endsWith("spenden.html")) {
+        } else if (path.startsWith("/pages/spenden/") && linkPath.endsWith("/spenden/")) {
             link.classList.add("active");
         }
     });

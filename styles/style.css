@@ -1007,10 +1007,6 @@ h1 {
     font-weight: bold;
 }
 
-section p {
-    text-align: left;
-}
-
 section h2 {
     text-align: left;
 }
@@ -1072,10 +1068,9 @@ section h2 {
     font-weight: bold;
     text-align: center; /* Text innerhalb des Buttons zentrieren */
 }
-section p {
+.section-article p {
     text-align: left;
 }
-
 section h2 {
     text-align: left;
 }
@@ -1140,4 +1135,11 @@ header h1 img {
 #home-link {
     text-decoration: none;
     color: white;
+}
+
+.warum-blockdenker .text-container {
+    max-width: 1200px; /* gleiche Breite wie deine Cards */
+    margin: 0 auto;
+    padding: 0 15px; /* kleiner Innenabstand für mobile */
+    text-align: center !important;
 }
