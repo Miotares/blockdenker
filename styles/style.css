@@ -1143,3 +1143,142 @@ header h1 img {
     padding: 0 15px; /* kleiner Innenabstand für mobile */
     text-align: center !important;
 }
+
+@media (max-width: 768px) {
+    .article-container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Falls du zusätzlich verhindern willst, dass der Text am Rand klebt */
+    .article-container p,
+    .article-container h1,
+    .article-container h2,
+    .article-container h3,
+    .article-container ul,
+    .article-container ol,
+    .article-container img {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    /* Falls Bilder trotzdem volle Breite sollen */
+    .article-container img.full-width {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+header {
+    background-color: #1a2c36;
+    color: white;
+    text-align: center;
+    padding: 10px 0 0 0; /* Oben 10px, rechts 0, unten 0, links 0 */
+    font-size: 16px;
+    position: relative; /* WICHTIG */
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    z-index: 2000;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 10px 0 10px 0; /* Oben und unten 10px, rechts und links 0 */
+    }
+
+    header .logo-container {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        justify-content: flex-start; /* Wichtig */
+        margin-left: 12px;
+    }
+
+    header h1 span {
+        text-align: left;
+    }
+
+    header #home-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    header #home-link p {
+        text-align: left;
+        margin-left: 12px;
+    }
+
+    header h1 img {
+        height: 35px;
+        width: auto;
+        margin-right: 0px;
+    }
+
+    header #home-link span {
+        text-align: left;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    #nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #284453;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.3s ease;
+    }
+
+    #nav.open {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    #nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    #nav a {
+        display: block;
+        padding: 15px 0;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        border-bottom: 1px solid #284453;
+    }
+
+    #nav a:hover {
+        background-color: #284453;
+    }
+
+    #nav li:last-child a {
+        border-bottom: none;
+    }
+}
+

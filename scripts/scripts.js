@@ -25,8 +25,30 @@ async function loadHeader() {
         document.getElementById("header-container").innerHTML = await response.text();
 
         setTimeout(setActiveNav, 300); // Setzt die Navigation aktiv nach Laden des Headers
+        initMobileMenuToggle(); // <---- Das ist das Wichtige
     } catch (error) {
         console.error("❌ Fehler beim Laden des Headers:", error);
+    }
+}
+
+function initMobileMenuToggle() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#nav");
+    const navLinks = nav.querySelectorAll("a");
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+            nav.classList.toggle("open");
+        });
+
+        // Menü schließen, wenn ein Link angeklickt wird
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("open");
+            });
+        });
+    } else {
+        console.warn("⚠️ Burger-Menü oder Navigation nicht gefunden.");
     }
 }
 
@@ -243,6 +265,21 @@ function initSeamlessNavigation() {
     });
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo(0, 0);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#nav");
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+            nav.classList.toggle("open");
+        });
+    }
+});
+
 // ✅ Initialisierung nach `DOMContentLoaded`
 document.addEventListener("DOMContentLoaded", async () => {
     await loadHead();
@@ -256,3 +293,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 window.loadPage = loadPage; // Globale Funktion
+
