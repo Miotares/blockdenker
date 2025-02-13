@@ -101,44 +101,85 @@
         </table>
 
         <!-- Erklärungen zu den Kriterien -->
-        <section id="sicherheit">
-            <h2>Sicherheit</h2>
-            <p>
-                Hardware-Wallets sind die sicherste Option, da sie private Schlüssel offline speichern. Software-Wallets und Mobile-Wallets sind
-                anfälliger für Malware. Paper-Wallets sind sehr unsicher, da sie leicht verloren oder gestohlen werden können.
-            </p>
-        </section>
-
-        <section id="benutzerfreundlichkeit">
-            <h2>Benutzerfreundlichkeit</h2>
-            <p>
-                Software- und Mobile-Wallets sind am einfachsten zu bedienen. Hardware-Wallets erfordern zusätzliche Geräte, während Paper-Wallets
-                eine komplizierte Handhabung haben.
-            </p>
-        </section>
-
-        <section id="zugriff">
-            <h2>Zugriff</h2>
-            <p>
-                Mobile- und Software-Wallets bieten sofortigen Zugriff. Hardware-Wallets benötigen das physische Gerät. Paper-Wallets erlauben 
-                nur einen einmaligen Zugriff.
-            </p>
-        </section>
-
-        <section id="backup">
-            <h2>Backup & Wiederherstellung</h2>
-            <p>
-                Hardware-Wallets bieten durch Recovery Seeds eine einfache Wiederherstellung. Software- und Mobile-Wallets sind vom Gerät abhängig.
-                Paper-Wallets sind sehr riskant, da ein Verlust des Papiers gleichbedeutend mit einem Verlust der Coins ist.
-            </p>
-        </section>
-
-        <section id="kosten">
-            <h2>Kosten</h2>
-            <p>
-                Hardware-Wallets sind kostenpflichtig. Software-, Mobile- und Paper-Wallets sind kostenlos, allerdings können Sicherheitsrisiken
-                dabei höhere Kosten verursachen.
-            </p>
+        <section class="section-article">
+            <h2>Hardware-Wallets</h2>
+            <p>Hardware Wallets sind <b>physische Geräte</b>, die private Schlüssel sicher offline speichern. Sie bieten die höchste Sicherheit für Bitcoin, da sie vor Online-Angriffen geschützt sind und Transaktionen manuell bestätigt werden müssen.</p>
+            <h3>Sicherheit</h3>
+            <p>Hardware Wallets bieten die höchste Sicherheit, da sie private Schlüssel offline speichern und somit vor Hackern und Malware geschützt sind. Selbst wenn ein Computer kompromittiert ist, bleibt das Guthaben auf einem Hardware Wallet sicher.</p>
+            <h3>Benutzerfreundlichkeit</h3>
+            <p>Die Nutzung eines Hardware Wallets erfordert eine gewisse technische Einarbeitung, da Transaktionen manuell bestätigt werden müssen. Dennoch sind moderne Geräte so gestaltet, dass sie auch für weniger erfahrene Nutzer verständlich sind.</p>
+            <h3>Zugriff</h3>
+            <p>Der Zugriff auf ein Hardware Wallet ist nur möglich, wenn das physische Gerät vorhanden ist. Das bietet hohe Sicherheit, kann aber unpraktisch sein, wenn man schnell eine Transaktion durchführen möchte.</p>
+            <h3>Backup & Wiederherstellung</h3>
+            <p>Hardware Wallets bieten eine sehr sichere Backup- und Wiederherstellungsoption, da sie mit einem Seed Phrase (Wiederherstellungsphrase) gesichert werden. Solange diese Phrase sicher aufbewahrt wird, kann das Wallet jederzeit auf einem neuen Gerät wiederhergestellt werden.</p>
+            <h3>Kosten</h3>
+            <p>Ein Nachteil von Hardware Wallets sind die relativ hohen Anschaffungskosten. Gute Geräte kosten zwischen <b>50 und 200 Euro</b>, was sie teurer macht als Software- oder Mobile Wallets, aber die erhöhte Sicherheit rechtfertigt oft den Preis.</p>
+            <h3>Empfehlungen</h3>
+            <ul class="recommendations">
+                <li><a href="https://bitbox.swiss/de/" target="_blank">BitBox02</a></li>
+                <li><a href="https://trezor.io/store" target="_blank">Trezor (verschiedene Modelle)</a></li>
+            </ul>
+            <hr>
+            <br>
+            <h2>Software-Wallets</h2>
+            <p>Software Wallets sind <b>digitale Anwendungen</b> für Computer oder Smartphones, die private Schlüssel speichern und den direkten Zugriff auf Bitcoin ermöglichen. Sie sind benutzerfreundlich, aber durch ihre Online-Verbindung anfälliger für Angriffe als Hardware Wallets.</p>
+            <h3>Sicherheit</h3>
+            <p>Software Wallets bieten eine mittlere Sicherheit, da die privaten Schlüssel auf dem Gerät des Nutzers gespeichert werden. Sie sind anfälliger für Malware, Viren und Phishing-Angriffe, insbesondere wenn das Gerät mit dem Internet verbunden ist.</p>
+            <h3>Benutzerfreundlichkeit</h3>
+            <p>Software Wallets sind sehr benutzerfreundlich und einfach einzurichten. Sie ermöglichen schnelle Transaktionen und sind oft in wenigen Minuten installiert, was sie besonders für Einsteiger attraktiv macht.</p>
+            <h3>Zugriff</h3>
+            <p>Da Software Wallets auf dem Computer oder Smartphone laufen, sind sie jederzeit und überall verfügbar. Allerdings ist der Zugriff abhängig vom Gerät – ein Defekt oder Verlust kann ohne Backup zum Totalverlust führen.</p>
+            <h3>Backup & Wiederherstellung</h3>
+            <p>Die Sicherheit des Backups hängt vom Gerät ab, auf dem das Wallet installiert ist. Nutzer müssen sich eine Seed Phrase notieren, um ihr Wallet bei einem Geräteverlust wiederherstellen zu können. Ohne dieses Backup sind die Coins unwiederbringlich verloren.</p>
+            <h3>Kosten</h3>
+            <p>Software Wallets sind in der Regel kostenlos und können einfach heruntergeladen werden. Nutzer zahlen allerdings indirekt durch das erhöhte Risiko von Hacks und Malware, da private Schlüssel auf einem internetfähigen Gerät gespeichert sind.</p>
+            <h3>Empfehlungen</h3>
+            <ul class="recommendations">
+                <li><a href="https://electrum.org/" target="_blank">Electrum</a></li>
+                <li><a href="https://sparrowwallet.com/" target="_blank">Sparrow</a></li>
+                <li><a href="https://exodus.com/" target="_blank">Exodus</a></li>
+            </ul>
+            <hr>
+            <br>
+            <h2>Paper-Wallets</h2>
+            <p>Paper Wallets sind physische Ausdrucke oder handschriftliche Notizen, die den privaten und/oder öffentlichen Schlüssel enthalten. Sie sind eine vollständig <b>offline gespeicherte</b> Form von Bitcoin, bieten jedoch erhebliche Risiken in der Handhabung und Sicherheit.</p>
+            <h3>Sicherheit</h3>
+            <p>Paper Wallets sind sehr unsicher, da sie leicht beschädigt, gestohlen oder verloren gehen können. Zudem sind sie anfällig für Drucker-Sicherheitslücken oder fehlerhafte Generierung, wenn sie nicht auf einem sicheren, offline Gerät erstellt wurden.</p>
+            <h3>Benutzerfreundlichkeit</h3>
+            <p>Die Nutzung von Paper Wallets ist kompliziert und fehleranfällig, da der Zugriff auf die Coins manuell erfolgen muss. Zudem kann das Einlösen von Guthaben riskant sein, da der private Schlüssel bei der ersten Verwendung offengelegt wird.</p>
+            <h3>Zugriff</h3>
+            <p>Ein Paper Wallet bietet nur einmaligen Zugriff, da der private Schlüssel physisch aufgeschrieben wird. Sobald es zur Transaktionsverarbeitung genutzt wird, sollte es als unsicher betrachtet werden.</p>
+            <h3>Backup & Wiederherstellung</h3>
+            <p>Paper Wallets sind extrem riskant, da sie keinen digitalen Backup-Mechanismus haben. Ein verlorenes oder zerstörtes Paper Wallet bedeutet, dass die Coins unwiederbringlich verloren sind.</p>
+            <h3>Kosten</h3>
+            <p>Paper Wallets sind kostenlos, da sie nur einen Ausdruck oder eine handschriftliche Notiz erfordern. Die potenziellen Verluste durch unsichere Handhabung können jedoch weitaus höher sein als die Kosten einer sichereren Wallet-Lösung.</p>
+            <h3>Empfehlungen</h3>
+            <ul class="recommendations">
+                <li>Stift & Papier</li>
+            </ul>
+            <hr>
+            <br>
+            <h2>Mobile Wallets</h2>
+            <p>Mobile Wallets sind <b>Apps für Smartphones</b>, die private Schlüssel speichern und schnellen Zugriff auf Bitcoin ermöglichen. Sie sind besonders praktisch für den täglichen Gebrauch, haben aber ein höheres Sicherheitsrisiko als Hardware Wallets.</p>
+            <h3>Sicherheit</h3>
+            <p>Mobile Wallets bieten eine mittlere Sicherheit, da sie auf internetfähigen Geräten gespeichert sind. Sie sind anfällig für Hacks, Malware und Geräteverlust, können aber durch Passwörter und Verschlüsselung abgesichert werden.</p>
+            <h3>Benutzerfreundlichkeit</h3>
+            <p>Mobile Wallets sind sehr einfach zu bedienen und ideal für den schnellen Zugriff auf Bitcoin. Sie bieten eine intuitive Benutzeroberfläche und sind oft mit QR-Code-Scanning für schnelle Zahlungen ausgestattet.</p>
+            <h3>Zugriff</h3>
+            <p>Da Mobile Wallets auf dem Smartphone gespeichert sind, bieten sie jederzeit mobilen Zugriff. Allerdings ist man vom Zustand des Geräts abhängig – ein Verlust oder Defekt kann ohne Backup zum Totalverlust führen.</p>
+            <h3>Backup & Wiederherstellung</h3>
+            <p>Mobile Wallets sind verlustanfällig, da sie auf einem Gerät gespeichert sind, das leicht gestohlen oder beschädigt werden kann. Die Wiederherstellung ist nur möglich, wenn die Seed Phrase sicher aufbewahrt wurde.</p>
+            <h3>Kosten</h3>
+            <p>Mobile Wallets sind kostenlos und einfach herunterzuladen. Nutzer zahlen jedoch indirekt mit einem höheren Sicherheitsrisiko, da ihre privaten Schlüssel auf einem Online-fähigen Gerät gespeichert sind.</p>
+            <h3>Empfehlungen</h3>
+            <ul class="recommendations">
+                <li><a href="https://apps.apple.com/de/app/bluewallet-bitcoin-wallet/id1376878040" target="_blank">BlueWallet</a></li>
+                <li><a href="https://apps.apple.com/de/app/trust-crypto-bitcoin-wallet/id1288339409" target="_blank">Trust Wallet</a></li>
+            </ul>
+            <hr>
+            <br>
+            <h2>Welche Wallet ist die beste für dich?</h2>
+            <p>Für Einsteiger reicht ein gutes <b>Software Wallet</b> völlig aus, solange man es sicher nutzt – also starke Passwörter setzt, regelmäßige Backups erstellt und das Gerät vor Malware schützt. Sobald jedoch ein größerer Betrag in Bitcoin gehalten wird, sollte man <b>schnellstmöglich auf ein Hardware Wallet umsteigen</b>, da es den besten Schutz vor Hacks und Diebstahl bietet. <b>Mobile Wallets</b> sind ideal für den schnellen Zugriff im Alltag, sollten aber nur für kleinere Beträge genutzt werden. <b>Paper Wallets</b> sind heute kaum noch empfehlenswert, da sie unsicher und unpraktisch in der Handhabung sind.</p>
         </section>
 
         <p class="back-link"><a href="../index.html">← Zurück zur Startseite</a></p>
