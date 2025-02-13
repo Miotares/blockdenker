@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags -->
+    <meta name="title" content="BitBox02 mit Umbrel Full Node verbinden – Anleitung für mehr Privatsphäre | Blockdenker">
+    <meta name="description" content="Lerne, wie du deine BitBox02 Hardware Wallet mit einer Umbrel Bitcoin Full Node verbindest. Schritt-für-Schritt-Anleitung für maximale Privatsphäre und Sicherheit.">
+    <meta name="keywords" content="BitBox02, Umbrel Node, Bitcoin Full Node, BitBox mit Node verbinden, BitBox02 Tutorial, Bitcoin Privatsphäre, BitBox02 Anleitung, Electrs installieren, Bitcoin Sicherheit, eigene Bitcoin Node">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (Facebook, LinkedIn etc.) -->
+    <meta property="og:title" content="BitBox02 mit Umbrel Full Node verbinden – Anleitung für mehr Privatsphäre">
+    <meta property="og:description" content="Verbinde deine BitBox02 Wallet mit einer Umbrel Bitcoin Full Node. Mehr Privatsphäre und Sicherheit für deine Bitcoin-Transaktionen.">
+    <meta property="og:image" content="https://blockdenker.de/pages/tutorials/bitbox-node/images/thumbnail.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tutorials/bitbox-node/">
+    <meta property="og:type" content="article">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BitBox02 mit Umbrel Full Node verbinden – Anleitung für mehr Privatsphäre">
+    <meta name="twitter:description" content="Nutze deine eigene Bitcoin Full Node mit der BitBox02 Wallet. Mehr Kontrolle, Privatsphäre und Sicherheit – Schritt-für-Schritt-Anleitung.">
+    <meta name="twitter:image" content="https://blockdenker.de/pages/tutorials/bitbox-node/images/thumbnail.png">
+    
+    <title>Bitbox02 mit Umbrel Bitcoin Fullnode verbinden</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+    <!-- Header -->
+    <div id="header-container"></div>
+    <!-- Content -->
+    <div id="content">
+        <div class="article-container">
+            <aside class="toc-container">
+                <h3>Inhaltsverzeichnis</h3>
+                <ul id="table-of-contents">
+                    <!-- Hier wird das ToC per JavaScript eingefügt -->
+                </ul>
+            </aside>
+            <article class="article-box">
+                <section  class="section-article">
+                <p class="back-link"><a href="/pages/articles/">← Zurück zu den Artikeln</a></p>
+
+                <h1>Bitbox02 mit Umbrel Bitcoin Fullnode verbinden</h1>
+                <p class="article-date"><strong>Veröffentlicht am:</strong> 13. Februar 2025</p>
+
+                <div class="article-image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/thumbnail.png" alt="Bitcoin Bild" class="article-thumbnail">
+                </div>
+
+                <p>Die Verbindung deiner <b>BitBox02 Hardware Wallet</b> mit einer <b>eigenen UMBREL Bitcoin Full Node</b> bringt dir <b>mehr Privatsphäre und Sicherheit</b>. Du fragst deine Transaktionen und Kontostände <b>direkt über deine eigene Node ab</b> und <b>gibst keine sensiblen Daten an Dritte</b> weiter.</p>
+                <p>Außerdem <b>überprüfst du selbstständig</b>, ob deine Transaktionen <b>gültig sind</b>. Du bist <b>nicht mehr auf fremde Server</b> angewiesen und hast die <b>volle Kontrolle über deine Bitcoin-Verwaltung</b>.</p>            
+                <hr>
+                <h2>Voraussetzungen</h2>
+                <p>Um deine <b>BitBox02 mit einer UMBREL Full Node</b> zu verbinden, benötigst du folgende Dinge:</p>
+                <ul>
+                    <li>Eine <b>BitBox02 Hardware Wallet</b> (aktuelle Firmware installiert)</li>
+                    <li>Eine <b>laufende UMBREL Bitcoin Full Node</b> (vollständig synchronisiert)</li>
+                    <li>Die <b>BitBoxApp</b> auf deinem Computer (aktuellste Version)</li>
+                </ul>
+                <hr>
+                <h2>Schritt 1 – Tor auf Umbrel aktivieren</h2>
+                <p>Damit die BitBoxApp später über das Tor-Netzwerk mit deiner Umbrel Node kommunizieren kann, musst du Tor auf Umbrel aktivieren. So gehst du vor:</p>
+                <ol>
+                    <li>Melde dich in deinem <b>Umbrel Dashboard</b> im Browser an.</li>
+                    <li>Klicke unten links auf das <b>Einstellungen-Symbol (⚙️ Settings)</b>.</li>
+                    <li>Scrolle runter bis zum Bereich <b>Tor</b>.</li>
+                    <li>Klicke auf <b>Enable Tor</b>, um Tor zu aktivieren.</li>
+                    <li>Starte deine Umbrel Node <b>zur Sicherheit einmal neu</b>, damit alle Dienste über Tor laufen.</li>
+                </ol>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/img-umbrel-settings-tor.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <p>Nachdem Tor aktiviert ist, kannst du mit <b>Schritt 2 – Electrum Server auf Umbrel installieren</b> weitermachen.</p>
+                <hr>
+                <h2>Schritt 2 – Electrum Server auf Umbrel installieren</h2>
+                <p>Damit die BitBoxApp deine Umbrel Node später als Datenquelle verwenden kann, musst du auf Umbrel einen <b>Electrum Server</b> installieren. Wir nutzen dafür die App <b>Electrs</b>, die im Umbrel App Store verfügbar ist.</p>
+                <ol>
+                    <li>Öffne dein <b>Umbrel Dashboard</b> im Browser.</li>
+                    <li>Gehe in den <b>App Store</b> (linke Seitenleiste).</li>
+                    <li>Suche nach <b>Electrs</b> und klicke auf <b>Installieren</b>.</li>
+                    <li>Warte, bis die Installation abgeschlossen ist – das kann <b>einige Minuten dauern</b>.</li>
+                    <li>Nach der Installation beginnt Electrs, deine Bitcoin Blockchain zu indexieren. Dieser Prozess kann <b>mehrere Stunden</b> in Anspruch nehmen, je nachdem, wie leistungsfähig deine Umbrel Node ist.</li>
+                    <li>Du kannst den Status der Indexierung jederzeit in der <b>Electrs-App</b> einsehen. Warte, bis die Synchronisation <b>abgeschlossen</b> ist.</li>
+                </ol>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/img-electrs.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <hr>
+                <p>Sobald Electrs fertig synchronisiert ist, kannst du mit <b>Schritt 3 – Tor-Dienst auf deinem Computer installieren</b> fortfahren.</p>
+                <h2>Schritt 3 – Tor-Dienst auf deinem Computer installieren</h2>
+                <p>Damit sich die BitBoxApp über Tor mit deiner Umbrel Node verbinden kann, muss auch auf deinem Computer <b>Tor</b> laufen. Du hast dafür zwei Möglichkeiten:</p>
+                <h3>Variante 1: Tor-Browser (einfachste Methode)</h3>
+                <ol>
+                <li>Lade den <b>Tor-Browser</b> von der offiziellen Website herunter: <a href="https://www.torproject.org/" target="_blank">https://www.torproject.org/</a></li>
+                <li>Installiere den Tor-Browser und <b>öffne ihn</b>.</li>
+                <li>Lasse den Tor-Browser <b>im Hintergrund geöffnet</b>, solange du die BitBoxApp mit deiner Node nutzen möchtest.</li>
+                <li>In der BitBoxApp wird später der <b>Tor-Proxy Port 9150</b> verwendet (dazu mehr in Schritt 4).</li>
+                </ol>
+                <h3>Variante 2: Tor-Daemon (für dauerhaften Hintergrundbetrieb)</h3>
+                <ol>
+                <li>Installiere den Tor-Dienst (Daemon), je nach Betriebssystem:
+                <ul>
+                    <li><b>Windows:</b> Lade das Paket "Tor Expert Bundle" herunter: <a href="https://www.torproject.org/download/tor/">https://www.torproject.org/download/tor/</a>. Entpacke die Dateien, öffne die Eingabeaufforderung und starte Tor mit dem Befehl <b>tor.exe</b>.</li>
+                    <li><b>Mac:</b> Installiere Tor über Homebrew: <b>brew install tor</b>, dann mit <b>tor</b> starten.</li>
+                    <li><b>Linux:</b> Tor über Paketmanager installieren: z. B. <b>sudo apt install tor</b>, dann mit <b>tor</b> starten.</li>
+                </ul>
+                </li>
+                <li>Der Tor-Dienst läuft dann <b>im Hintergrund</b> und muss nicht jedes Mal manuell geöffnet werden.</li>
+                <li>In der BitBoxApp wird später der <b>Tor-Proxy Port 9050</b> verwendet (siehe Schritt 4).</li>
+                </ol>
+                <p>Wenn du den Tor-Browser nutzt, musst du ihn <b>bei jeder Nutzung öffnen</b>. Der Tor-Daemon läuft <b>dauerhaft im Hintergrund</b> und ist daher die <b>bequemere Lösung</b>, wenn du häufig mit deiner Full Node arbeitest.</p>
+                <p>Nachdem Tor auf deinem Rechner läuft, kannst du mit <b>Schritt 4 – Eigenen Node in der BitBoxApp einrichten</b> fortfahren.</p>
+                <hr>
+                <h2>Schritt 4 - Eigenen Node in der BitBox App einrichten</h2>
+                <p>Nun verbindest du deine <b>BitBoxApp</b> mit deiner <b>Umbrel Full Node</b>. Dazu hinterlegst du die Tor-Adresse deines <b>Electrum Servers (Electrs)</b> in der App:</p>
+                <ol>
+                    <li>Öffne die <b>BitBoxApp</b> auf deinem Computer.</li>
+                    <li>Klicke in der linken Seitenleiste auf <b>Einstellungen</b>.</li>
+                    <li>Scrolle nach unten zum Bereich <b>Tor Proxy</b> und aktiviere diesen.</li>
+                    <li>Gib den passenden Proxy-Port ein, je nachdem, wie du Tor eingerichtet hast:
+                      <ul>
+                        <li><b>Tor-Browser:</b> 127.0.0.1:9150</li>
+                        <li><b>Tor-Daemon:</b> 127.0.0.1:9050</li>
+                      </ul>
+                    </li>
+                   <li>Starte die <b>BitBoxApp neu</b>, damit die Tor-Verbindung aktiv wird.</li>
+                </ol>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/img-bitbox-app-tor.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <hr>
+                <h2>Schritt 5 - Full Node in der BitBox App verbinden</h2>
+                <p>Nachdem Tor aktiv ist, kannst du deine eigene Umbrel Full Node in der BitBoxApp hinterlegen:</p>
+                <ol>
+                    <li>Öffne die <b>BitBoxApp</b> erneut und gehe in die <b>erweiterten Einstellungen</b>.</li>
+                    <li>Wähle den Bereich <b>Eigenen Full Node verbinden</b>.</li>
+                    <li>Gib im Feld <b>„Endpunkt“</b> die <b>Onion-Adresse deines Electrum Servers (Electrs)</b> ein, die du in Umbrel notiert hast (z. B. <i>gwdllz5g7vky2q4gr45zGuvopjzf33czreca3a3exosftx72ekppkuqd.onion:50001</i>).</li>
+                    <li>Klicke auf <b>Überprüfen</b>. Wenn alles richtig ist, erscheint die Meldung <b>„Verbindung zu ... wurde erfolgreich hergestellt“</b>.</li>
+                    <li>Klicke auf <b>Hinzufügen</b>, damit deine Node gespeichert wird.</li>
+                    <li>Optional kannst du die <b>Shift Crypto-Nodes entfernen</b>, damit du <b>ausschließlich deine eigene Full Node</b> nutzt.</li>
+                </ol>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/img-connect-node-bitbox-app.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/bitbox-node/images/img-bitbox-successful.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <p>Damit ist deine <b>BitBox02</b> erfolgreich mit deiner <b>Umbrel Full Node</b> verbunden. Alle Abfragen und Transaktionen laufen jetzt über deine eigene Node.</p>
+                <hr>
+                <h2>Hat nicht geklappt? – Troubleshooting</h2>
+                <p>Falls die Verbindung zu deiner Umbrel Full Node nicht funktioniert, könnten die folgenden Ursachen vorliegen:</p>
+                <ul>
+                <li><b>Tor-Dienst läuft nicht:</b> Überprüfe, ob der <b>Tor-Browser</b> geöffnet ist oder der <b>Tor-Daemon</b> im Hintergrund läuft.</li>
+                <li><b>Falscher Proxy-Port:</b> Kontrolliere, ob du in der BitBoxApp den <b>richtigen Tor-Proxy</b> eingetragen hast:
+                <ul>
+                    <li><b>Tor-Browser:</b> 127.0.0.1:9150</li>
+                    <li><b>Tor-Daemon:</b> 127.0.0.1:9050</li>
+                </ul>
+                </li>
+                <li><b>Umbrel Node nicht über Tor erreichbar:</b> Öffne das Umbrel Dashboard und prüfe, ob Tor aktiviert ist und ob du die <b>korrekte Onion-Adresse</b> deines Electrum Servers eingegeben hast.</li>
+                <li><b>BitBoxApp Neustart:</b> Manchmal hilft es, die <b>BitBoxApp komplett zu schließen</b> und <b>neu zu starten</b>, nachdem die Tor-Einstellungen geändert wurden.</li>
+                <li><b>Umbrel neu starten:</b> Auch die Umbrel Node kann manchmal haken. Starte sie <b>zur Sicherheit neu</b>.</li>
+                <li><b>Electrs synchronisiert?</b> Vergewissere dich, dass die <b>Electrs-App auf Umbrel vollständig synchronisiert</b> ist. Dies kann <b>nach der Installation mehrere Stunden dauern</b>.</li>
+                </ul>
+                <p>Wenn die Verbindung trotz dieser Schritte nicht klappt, überprüfe alle <b>Eingaben noch einmal sorgfältig</b> und versuche es anschließend erneut.</p>
+
+
+
+
+
+                <p class="back-link"><a href="/pages/articles/">← Zurück zu den Artikeln</a></p>
+
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+</body>
+</html>

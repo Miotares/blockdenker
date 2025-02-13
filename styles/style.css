@@ -180,7 +180,7 @@ footer nav ul li a:hover {
 
 .blog-container {
     display: flex;
-    gap: 1rem; /* Weniger Abstand zwischen den Cards */
+    gap: 0rem; /* Weniger Abstand zwischen den Cards */
     justify-content: center;
     flex-wrap: wrap;
     padding: 0 6vw; /* Reduziere linken und rechten Abstand */
@@ -188,12 +188,13 @@ footer nav ul li a:hover {
 
 .blog-card {
     background: #f8f9fa;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     width: 350px;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
+    margin: 10px 10px;
 }
 
 .blog-card:hover {
@@ -219,7 +220,7 @@ footer nav ul li a:hover {
 
 .blog-date {
     font-size: 0.9rem;
-    color: #aaa;
+    color: #6a6a6a;
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -400,8 +401,8 @@ footer nav ul li a:hover {
 
 /* ✅ Artikel-Container breiter machen */
 .article-container {
-    max-width: 1000px;  /* Erhöhte maximale Breite */
-    width: 90%;  /* Anpassbar für kleinere Screens */
+    max-width: 1200px;  /* Erhöhte maximale Breite */
+    width: 100%;  /* Anpassbar für kleinere Screens */
     margin: 40px auto;  /* Zentriert den Artikel */
 }
 
@@ -421,6 +422,7 @@ footer nav ul li a:hover {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    border-radius: 8px;
 }
 
 .article-thumbnail {
@@ -536,7 +538,7 @@ footer nav ul li a:hover {
     display: flex;
     gap: 30px;
     align-items: flex-start;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: 40px auto;
     /*padding-left: 280px; /* Platz für das Inhaltsverzeichnis */
     position: relative; /* Stellt sicher, dass .toc-container sich daran ausrichtet */
@@ -1107,6 +1109,10 @@ section h2 {
     color: #f7931a;
 }
 
+.section-article li {
+    text-align: left;
+}
+
 .recommendations {
     text-align: left;
     display: flex;
@@ -1400,4 +1406,40 @@ h1::before, h2::before {
     height: 80px; /* Je nach Header-Größe */
     margin-top: -80px;
     visibility: hidden;
+}
+
+.index-resource-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch; /* Sorgt dafür, dass alle Boxen die gleiche Höhe haben */
+}
+
+.index-resource-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 320px; /* Fixe Basisbreite */
+    max-width: 320px;  /* Maximale Breite */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
+}
+
+.index-resource-item {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Inhalte oben ausrichten */
+    height: 100%; /* Boxen gleich hoch */
+}
+
+.index-resource-item-link:hover .index-resource-item {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
 }
