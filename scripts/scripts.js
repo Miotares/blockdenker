@@ -290,6 +290,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetchBitcoinData(); // Bitcoin-Daten abrufen
     setActiveNav(); // Navigation setzen
     initSeamlessNavigation(); // Nahtlose Navigation aktivieren
+
+    document.body.classList.add('loaded');
 });
 
 window.loadPage = loadPage; // Globale Funktion
