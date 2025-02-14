@@ -1631,3 +1631,31 @@ h1::before, h2::before {
     height: 300px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.article-box ul,
+.article-box ol {
+    margin-left: 1.5em; /* Einrückung für bessere Lesbarkeit */
+    padding-left: 0;
+    max-width: 770px; /* Gleiche Breite wie der Fließtext */
+    line-height: 1.8;
+    color: #333;
+    font-size: 16px;
+}
+
+.article-box li {
+    margin-bottom: 0.5em; /* Mehr Abstand zwischen Listenelementen */
+}
+
+.article-box ol li::marker {
+    font-weight: bold;
+    color: #f7931a; /* Bitcoin-Orange für Nummern */
+}
+
+.article-box ul li::before {
+    content: '•'; /* Standard Bullet Point */
+    color: #f7931a; /* Bitcoin-Orange */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
