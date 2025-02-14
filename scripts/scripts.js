@@ -196,6 +196,8 @@ function setActiveNav(path = window.location.pathname) {
     });
 }
 
+
+
 // ✅ AJAX Seitenladefunktion für Seamless Navigation
 async function loadPage(url, updateHistory = true) {
     try {
@@ -236,7 +238,8 @@ async function loadPage(url, updateHistory = true) {
 
         setActiveNav();
         generateTableOfContents();
-    } catch (error) {
+        scrollToTopInstant();
+        } catch (error) {
         console.error("❌ Fehler beim Laden der Seite:", error);
     }
 }
@@ -303,10 +306,6 @@ function generateTableOfContents() {
     tocContainer.appendChild(tocList);
 }
 document.addEventListener("DOMContentLoaded", generateTableOfContents);
-
-window.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo(0, 0);
-});
 
 document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");

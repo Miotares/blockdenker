@@ -114,7 +114,7 @@ footer {
     background-color: #222;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding-top: 20px;
     font-size: 14px;
 }
 
@@ -416,6 +416,14 @@ footer nav ul li a:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.article-box p {
+    line-height: 1.8; /* oder 1.7, je nach Geschmack */
+    max-width: 770px; /* Optimal sind meist 60-75 Zeichen pro Zeile */
+    color: #333; /* Oder ein dunkles Grau wie #444 */
+    font-size: 16px; /* oder 17px, falls dir 16px noch zu klein ist */
+    margin-bottom: 1.2em;
+}
+
 /* ✅ Artikel-Bild */
 .article-image-container {
     width: 100%;
@@ -538,7 +546,7 @@ footer nav ul li a:hover {
     display: flex;
     gap: 30px;
     align-items: flex-start;
-    max-width: 1150px;
+    max-width: 1200px;
     margin: 40px auto;
     /*padding-left: 280px; /* Platz für das Inhaltsverzeichnis */
     position: relative; /* Stellt sicher, dass .toc-container sich daran ausrichtet */
@@ -680,7 +688,7 @@ footer {
     background-color: #1a2c36;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding-top: 20px;
     font-size: 14px;
 }
 
@@ -1442,4 +1450,184 @@ h1::before, h2::before {
 .index-resource-item-link:hover .index-resource-item {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     transform: translateY(-3px);
+}
+
+.affiliate-container {
+    display: flex;
+    gap: 20px; /* Abstand zwischen den Boxen */
+    justify-content: center;
+    align-items: stretch; /* Beide Boxen auf gleiche Höhe bringen */
+    flex-wrap: wrap; /* Falls der Platz nicht reicht */
+}
+
+.affiliate-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 380px; /* Flexibel, min. 380px */
+    max-width: 400px;
+    height: 100%; /* Gleiche Höhe */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.affiliate-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.affiliate-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.affiliate-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.affiliate-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.affiliate-text h3 {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+    color: #1a2c36;
+}
+
+.affiliate-text p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.affiliate-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: auto;
+    margin-bottom: 0; /* WICHTIG */
+    align-items: flex-end; /* Falls irgendwas schief ist */
+}
+
+.affiliate-button,
+.affiliate-button-outline {
+    display: inline-block;
+    background-color: #f7931a;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: 2px solid #f7931a;
+    text-align: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.affiliate-button-outline {
+    background-color: white;
+    color: #f7931a;
+}
+
+.affiliate-button:hover {
+    background-color: #ff9f29;
+}
+
+.affiliate-button-outline:hover {
+    background-color: #f7931a;
+    color: white;
+}
+
+.affiliate-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap; /* Für kleinere Screens */
+}
+
+.affiliate-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Falls du willst, dass sie immer gleich breit sind */
+    max-width: 400px; /* Falls du eine max-Breite willst */
+    flex: 1; /* Macht die Boxen gleich groß */
+    height: auto; /* Flex regelt die Höhe */
+    box-sizing: border-box;
+}
+
+.affiliate-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.affiliate-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: auto; /* Wichtig: Drückt die Buttons nach unten */
+}
+
+.affiliate-button,
+.affiliate-button-outline {
+    display: inline-block;
+    background-color: #f7931a;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: 2px solid #f7931a;
+    text-align: center;
+    flex-grow: 1; /* Damit beide gleich groß sind */
+    box-sizing: border-box;
+}
+
+.affiliate-button-outline {
+    background-color: white;
+    color: #f7931a;
+}
+
+.affiliate-button:hover {
+    background-color: #ff9f29;
+}
+
+.affiliate-button-outline:hover {
+    background-color: #f7931a;
+    color: white;
+}
+
+.bg-section {
+    background-color: white; /* oder eine andere Farbe */
+    padding: 20px 0; /* sorgt für mehr Luft nach oben und unten */
+    border-radius: 24px;
+    width: 600;
+    height: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
