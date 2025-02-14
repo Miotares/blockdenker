@@ -1659,3 +1659,16 @@ h1::before, h2::before {
     width: 1em;
     margin-left: -1em;
 }
+
+.article-image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.article-box {
+    max-width: 100%; /* Für mobile */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Damit nichts rausläuft */
+    padding: 20px; /* oder prüfen, ob padding den Rahmen sprengt */
+}
