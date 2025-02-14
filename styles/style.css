@@ -422,6 +422,22 @@ footer nav ul li a:hover {
     color: #333; /* Oder ein dunkles Grau wie #444 */
     font-size: 16px; /* oder 17px, falls dir 16px noch zu klein ist */
     margin-bottom: 1.2em;
+    text-align: justify !important;
+}
+
+.article-box a {
+    color: #f7931a;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.article-box a:hover {
+    background-color: rgba(247, 147, 26, 0.1); /* Leichtes Orange als Hover-Hintergrund */
+    color: #d17600;
+    text-decoration: none;
 }
 
 /* ✅ Artikel-Bild */
@@ -1671,4 +1687,82 @@ h1::before, h2::before {
     box-sizing: border-box;
     overflow-x: hidden; /* Damit nichts rausläuft */
     padding: 20px; /* oder prüfen, ob padding den Rahmen sprengt */
+}
+
+.toc-container li.active a {
+    font-weight: bold;
+    color: #d17600;
+}
+
+#scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #f7931a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#scrollToTopButton.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+#scrollToTopButton.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    #scrollToTopButton{
+        display: none;
+    }
+}
+
+.article-box h1 {
+    font-size: 36px;
+    color: #f7931a;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 4px solid #f7931a;
+    padding-bottom: 8px;
+}
+
+.article-box h2 {
+    font-size: 28px;
+    color: #1a2c36;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-left: 6px solid #f7931a;
+    padding-left: 12px;
+    background-color: #fef3e8;
+    border-radius: 4px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.article-box h3 {
+    font-size: 22px;
+    color: #1a2c36;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-left: 3px solid #f7931a;
+    padding-left: 8px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }

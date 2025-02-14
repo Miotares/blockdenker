@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags für den Artikel anpassen -->
+    <meta name="title" content="Hier kommt der Titel des Artikels hin | Blockdenker">
+    <meta name="description" content="Hier kommt die Meta-Beschreibung hin – kurz und prägnant.">
+    <meta name="keywords" content="Schlagworte, getrennt, durch, Kommas">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (für Facebook, LinkedIn & Co.) -->
+    <meta property="og:title" content="Hier kommt der Titel des Artikels hin">
+    <meta property="og:description" content="Hier kommt die Open Graph Beschreibung hin.">
+    <meta property="og:image" content="https://blockdenker.de/images/thumbnail-artikelbild.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/artikel-url.html">
+    <meta property="og:type" content="article">
+
+    <!-- ✅ Twitter Card (für bessere Darstellung auf Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hier kommt der Titel des Artikels hin">
+    <meta name="twitter:description" content="Hier kommt die Twitter-Beschreibung hin.">
+    <meta name="twitter:image" content="https://blockdenker.de/images/thumbnail-artikelbild.png">
+
+    <title>Hier kommt der Titel des Artikels hin | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+</head>
+<body>
+    <button id="scrollToTopButton" class="hidden">⬆️ Nach oben</button>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hauptinhalt -->
+    <div id="content">
+        <div class="article-container">
+            <aside class="toc-container">
+                <h3>Inhaltsverzeichnis</h3>
+                <ul id="table-of-contents">
+                    <!-- Hier wird das ToC per JavaScript eingefügt -->
+                </ul>
+            </aside>
+            <article class="article-box">
+                <section class="section-article">
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p>
+                    <h1 style="text-align: left;">Hier kommt die Hauptüberschrift H1 hin</h1>
+                    <h2>1. Erste Zwischenüberschrift H2</h2>
+                    <h3>Einleitung oder weiterer Abschnitt H3</h3>
+                    <p>Hier kommt der Fließtext des Artikels hin...</p>
+                    <h2>2. Zweite Zwischenüberschrift H2</h2>
+                    <p>Weiterer Artikelinhalt...</p>
+                    <figure class="image-container">
+                        <img src="/images/beispielbild.png" class="article-image" alt="Bildbeschreibung">
+                        <figcaption class="image-caption">Bildunterschrift mit Quelle</figcaption>
+                    </figure>
+                    <hr>
+                    <br>
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p>
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>

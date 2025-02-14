@@ -238,12 +238,63 @@ async function loadPage(url, updateHistory = true) {
 
         setActiveNav();
         generateTableOfContents();
+        initTocClickHandler();
         scrollToTopInstant();
+        toggleScrollToTopButton();
         } catch (error) {
         console.error("❌ Fehler beim Laden der Seite:", error);
     }
 }
 
+function initScrollSpy() {
+    const headings = document.querySelectorAll('.article-box h1, .article-box h2');
+    const tocLinks = document.querySelectorAll('.toc-container a');
+
+    function highlightCurrentHeading() {
+        let currentHeading = null;
+
+        for (let i = 0; i < headings.length; i++) {
+            const rect = headings[i].getBoundingClientRect();
+
+            // Bedingung: Überschrift ist im sichtbaren Bereich
+            if (rect.top <= 120 && rect.bottom >= 0) {
+                currentHeading = headings[i];
+            }
+        }
+
+        // Sonderfälle
+        const isAtTop = window.scrollY === 0;
+        const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+
+        if (isAtTop) {
+            currentHeading = headings[0];
+        } else if (isAtBottom) {
+            currentHeading = headings[headings.length - 1];
+        }
+
+        tocLinks.forEach(link => link.parentElement.classList.remove('active'));
+
+        if (currentHeading) {
+            const currentId = currentHeading.id;
+
+            tocLinks.forEach(link => {
+                const linkHash = link.hash.replace('#', '');
+
+                // 🔥 Sicherstellen, dass wirklich das korrekte Element markiert wird
+                if (linkHash === currentId) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        }
+    }
+
+    // Initial sofort markieren
+    highlightCurrentHeading();
+
+    // Bei Scrollen und Resizing aktualisieren
+    document.addEventListener('scroll', highlightCurrentHeading);
+    window.addEventListener('resize', highlightCurrentHeading);
+}
 // 🎯 Popstate-Handling für Zurück- und Vorwärtsnavigation
 window.addEventListener("popstate", function () {
     setActiveNav(); // Navigation sofort aktualisieren
@@ -277,14 +328,13 @@ function generateTableOfContents() {
     const tocContainer = document.getElementById('table-of-contents');
     if (!tocContainer) return;
 
-    // Nur Überschriften innerhalb der Artikelbox holen!
     const articleBox = document.querySelector('.article-box');
     if (!articleBox) return;
 
     const headings = articleBox.querySelectorAll('h1, h2');
     const tocList = document.createElement('ul');
 
-    const isFolderUrl = !window.location.href.endsWith('index.html');
+    const isFolderUrl = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html');
 
     headings.forEach((heading, index) => {
         if (!heading.id) {
@@ -296,15 +346,73 @@ function generateTableOfContents() {
 
         const tocLink = document.createElement('a');
         tocLink.href = (isFolderUrl ? 'index.html' : '') + '#' + heading.id;
-        tocLink.textContent = heading.textContent;
+        tocLink.textContent = heading.textContent.trim();
 
         tocItem.appendChild(tocLink);
         tocList.appendChild(tocItem);
     });
 
-    tocContainer.innerHTML = ''; // Vorherigen Inhalt leeren (falls mehrfach generiert wird)
+    tocContainer.innerHTML = '';
     tocContainer.appendChild(tocList);
 }
+
+function initTocClickHandler() {
+    const tocContainer = document.getElementById('table-of-contents');
+    if (!tocContainer) return;
+
+    tocContainer.addEventListener('click', function (event) {
+        const link = event.target.closest('a');
+        if (!link) return;
+
+        const targetId = link.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            event.preventDefault(); // Verhindert das Hinzufügen von index.html zur URL
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            // Optional: Hash in der URL aktualisieren, aber ohne die Seite neu zu laden
+            const currentUrl = window.location.pathname + window.location.search + '#' + targetId;
+            history.replaceState(null, null, currentUrl);
+        }
+    });
+}
+
+function initScrollToTopButton() {
+    const scrollToTopButton = document.getElementById('scrollToTopButton');
+
+    if (!scrollToTopButton) return;
+
+    function toggleScrollToTopButton() {
+        const scrollThreshold = 300; // Pixel, ab wann der Button erscheinen soll
+        if (window.scrollY > scrollThreshold) {
+            scrollToTopButton.classList.remove('hidden');
+            scrollToTopButton.classList.add('visible');
+        } else {
+            scrollToTopButton.classList.remove('visible');
+            scrollToTopButton.classList.add('hidden');
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    scrollToTopButton.addEventListener('click', scrollToTop);
+    document.addEventListener('scroll', toggleScrollToTopButton);
+    window.addEventListener('resize', toggleScrollToTopButton);
+
+    // Falls du AJAX-Navigation nutzt, sicherstellen, dass es bei jedem Seitenwechsel neu geprüft wird:
+    window.toggleScrollToTopButton = toggleScrollToTopButton;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollToTopButton();
+});
+
 document.addEventListener("DOMContentLoaded", generateTableOfContents);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -329,6 +437,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     setActiveNav(); // Navigation setzen
     initSeamlessNavigation(); // Nahtlose Navigation aktivieren
     generateTableOfContents();
+    initTocClickHandler(); // <-- HIER NEU
+    // initScrollSpy(); // Optional, falls du das nochmal versuchst
 
     document.body.classList.add('loaded');
 });
