@@ -423,6 +423,8 @@ footer nav ul li a:hover {
     font-size: 16px; /* oder 17px, falls dir 16px noch zu klein ist */
     margin-bottom: 1.2em;
     text-align: justify !important;
+    hyphens: auto;
+    word-spacing: -0.3px; /* Kannst du zusätzlich kombinieren */
 }
 
 .article-box a {

@@ -2,6 +2,10 @@ function getBasePath() {
     return "/"; // Absoluter Pfad zur Wurzel der Website
 }
 
+function scrollToTopInstant() {
+    window.scrollTo(0, 0);
+}
+
 async function loadHead() {
     try {
         const basePath = getBasePath();
@@ -299,6 +303,7 @@ function initScrollSpy() {
 window.addEventListener("popstate", function () {
     setActiveNav(); // Navigation sofort aktualisieren
     loadPage(location.pathname, false);
+    scrollToTopInstant();
 });
 
 // ✅ Funktion für Seamless Navigation
