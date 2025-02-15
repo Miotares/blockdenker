@@ -1380,16 +1380,17 @@ body.loaded #preloader {
 .toc-level-1 a {
     margin-left: 0; /* H1 bündig */
     padding-left: 0; /* Kein zusätzlicher Abstand */
+    color: #f7931a;
 }
 
 .toc-level-2 a {
     margin-left: 15px; /* H2 leicht eingerückt */
     padding-left: 0;
+    color: #747474;
 }
 
 .toc-container a {
     text-decoration: none;
-    color: #f7931a;
     font-size: 0.95em;
 }
 
@@ -1766,3 +1767,52 @@ h1::before, h2::before {
     padding-top: 4px;
     padding-bottom: 4px;
 }
+
+.math-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #f7931a;
+    padding: 10px 15px;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 5px;
+    text-align: left;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.article-box-donation {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 15000px;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.article-header .back-link {
+    margin-bottom: 10px;
+}
+
+.article-header .back-link a {
+    text-decoration: none;
+    color: #f7931a;
+    font-weight: bold;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.article-header .back-link a:hover {
+    color: #d17a0d;
+    text-decoration: underline;
+}
+
