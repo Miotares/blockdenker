@@ -1138,6 +1138,7 @@ section h2 {
 }
 
 .recommendations {
+    list-style: none;
     text-align: left;
     display: flex;
     flex-direction: column;
