@@ -1,88 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <!-- Hauptseiten -->
+    <!-- Startseite -->
     <url>
         <loc>https://blockdenker.de/</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://blockdenker.de/datenschutz.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blockdenker.de/impressum.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://blockdenker.de/kontakt.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Ressourcen -->
-    <url>
-        <loc>https://blockdenker.de/pages/resources/books.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://blockdenker.de/pages/resources/papers.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://blockdenker.de/pages/resources/websites.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.7</priority>
     </url>
 
     <!-- Artikel -->
     <url>
-        <loc>https://blockdenker.de/articles/article1.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.9</priority>
+        <loc>https://blockdenker.de/pages/articles/001-wer-war-satoshi-nakamoto-bitcoin-erfinder/</loc>
     </url>
     <url>
-        <loc>https://blockdenker.de/articles/article2.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.9</priority>
+        <loc>https://blockdenker.de/pages/articles/002-versteckte-hinweise-von-satoshi-nakamoto/</loc>
     </url>
     <url>
-        <loc>https://blockdenker.de/articles/article3.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.9</priority>
+        <loc>https://blockdenker.de/pages/articles/003-wichtige-bitcoin-erfindungen-und-weiterentwicklungen/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/articles/004-bitcoin-wallets-erklärt/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/articles/005-souveränes-individuum/</loc>
     </url>
 
-    <!-- Vergleichsseiten -->
+    <!-- Datenschutz, Impressum, Kontakt -->
     <url>
-        <loc>https://blockdenker.de/bitcoin-vs-fiat.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.9</priority>
+        <loc>https://blockdenker.de/pages/datenschutz/</loc>
     </url>
     <url>
-        <loc>https://blockdenker.de/wallets.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.8</priority>
+        <loc>https://blockdenker.de/pages/impressum/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/kontakt/</loc>
     </url>
 
-    <!-- Weitere Seiten -->
+    <!-- Knowledge -->
     <url>
-        <loc>https://blockdenker.de/resources.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.7</priority>
+        <loc>https://blockdenker.de/pages/knowledge/bitcoin-grundlagen-guide/</loc>
     </url>
     <url>
-        <loc>https://blockdenker.de/spenden.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.6</priority>
+        <loc>https://blockdenker.de/pages/knowledge/bitcoin-vs-fiat-vs-gold/</loc>
     </url>
     <url>
-        <loc>https://blockdenker.de/tutorials.html</loc>
-        <lastmod>2024-02-12</lastmod>
-        <priority>0.7</priority>
+        <loc>https://blockdenker.de/pages/knowledge/bitcoin-wallets-comparison/</loc>
     </url>
+
+    <!-- Ressourcen -->
+    <url>
+        <loc>https://blockdenker.de/pages/resources/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/resources/books/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/resources/papers/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/resources/websites/</loc>
+    </url>
+
+    <!-- Spenden -->
+    <url>
+        <loc>https://blockdenker.de/pages/spenden/</loc>
+    </url>
+
+    <!-- Tools -->
+    <url>
+        <loc>https://blockdenker.de/pages/tools/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/tools/solo-miner-vergleich/</loc>
+    </url>
+
+    <!-- Tutorials -->
+    <url>
+        <loc>https://blockdenker.de/pages/tutorials/</loc>
+    </url>
+    <url>
+        <loc>https://blockdenker.de/pages/tutorials/bitbox-node/</loc>
+    </url>
+
 </urlset>
