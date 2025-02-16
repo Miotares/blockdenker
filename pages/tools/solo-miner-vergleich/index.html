@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags für den Solo-Miner Vergleich -->
+    <meta name="title" content="Solo-Miner Vergleich – Effizienzrechner für Solo-Mining | Blockdenker">
+    <meta name="description" content="Vergleiche die Effizienz von Solo-Minern basierend auf Hashrate, Stromverbrauch und Preis. Finde heraus, welcher Miner die beste Preis-Leistung bietet.">
+    <meta name="keywords" content="Solo-Miner Vergleich, Solo Mining Rechner, Bitcoin Mining Effizienz, Bitaxe, Nerdminer, LuckyMiner, Avalon Nano, Solo Mining, Bitcoin Hashrate, Stromverbrauch Mining, Bitcoin Effizienzrechner">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (für Facebook, LinkedIn & Co.) -->
+    <meta property="og:title" content="Solo-Miner Vergleich – Effizienzrechner für Solo-Mining">
+    <meta property="og:description" content="Vergleiche die Effizienz von Solo-Minern wie Bitaxe, Nerdminer und Avalon Nano. Berechne die Preis-Leistung und finde den besten Miner für dein Solo-Mining.">
+    <meta property="og:image" content="https://blockdenker.de/images/thumbnail-solo-miner-vergleich.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tools/solo-miner-vergleich/">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Card (für bessere Darstellung auf Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solo-Miner Vergleich – Effizienzrechner für Solo-Mining">
+    <meta name="twitter:description" content="Mit dem Effizienzrechner die besten Solo-Miner vergleichen – Hashrate, Stromverbrauch und Preis im Überblick.">
+    <meta name="twitter:image" content="https://blockdenker.de/images/thumbnail-solo-miner-vergleich.png">
+
+    <title>Solo-Miner Vergleich – Effizienzrechner für Solo-Mining | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+</head>
+<body>
+    <button id="scrollToTopButton" class="hidden">⬆️ Nach oben</button>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hauptinhalt -->
+    <div id="content">
+        <div class="solo-miner-box">
+            <div class="article-container">
+                <article class="article-box">
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+
+                    <h1>Solo-Miner Vergleich – Effizienzrechner für Solo-Mining</h1>
+                    <p>
+                        Der Miner Effizienzrechner ermöglicht den Vergleich verschiedener Solo-Miner basierend auf ihrer Hashrate, dem Stromverbrauch und dem Preis. 
+                        Anhand dieser Werte wird eine Effizienzkennzahl berechnet, die es ermöglicht, die Preis-Leistung der Miner auf einen Blick zu erkennen. 
+                        Je höher die Effizienz, desto besser das Verhältnis zwischen Hashrate, Stromverbrauch und Anschaffungskosten.
+                    </p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Miner</th>
+                                <th>Hashrate</th>
+                                <th>Einheit</th>
+                                <th>Verbrauch (W)</th>
+                                <th>Preis (€)</th>
+                                <th>Effizienz</th>
+                            </tr>
+                        </thead>
+                        <tbody id="minerBody">
+                            <!-- Reihen werden dynamisch eingefügt -->
+                        </tbody>
+                    </table>
+                    <p>
+                        <h2>Berechnungsmethode:</h2>
+                        Die Effizienz wird wie folgt berechnet:<br>
+                        <div class="math-box">
+                            <p>
+                                Effizienz = 
+                                <span style="display: inline-block; vertical-align: middle;">
+                                    <span style="border-bottom: 1px solid black; display: block; text-align: center;">Hashrate in TH/s</span>
+                                    <span style="display: block; text-align: center;">Verbrauch in Watt · Preis in €</span>
+                                </span>
+                                * 10.000
+                            </p>
+                        </div>
+                        Die Hashrate wird dabei in Terahash pro Sekunde (TH/s) umgerechnet. Die Farbskala zeigt die Effizienz der Miner im Vergleich: 
+                        Grün steht für hohe Effizienz, Rot für niedrige.
+                    </p>
+                    <h2>Lohnt sich Solomining überhaupt?</h2>
+                    <p>
+                        Solomining wird häufig als interessante Möglichkeit betrachtet, direkt am Bitcoin-Netzwerk teilzunehmen und potenziell eine Blockbelohnung zu erhalten. Doch lohnt sich das wirklich? Die ehrliche Antwort lautet: <strong>In den meisten Fällen nicht.</strong>
+                    </p>
+                    <p>
+                        Die Wahrscheinlichkeit, mit einem kleinen Solo-Miner tatsächlich einen Block zu finden, ist extrem gering. Die Netzwerk-Hashrate ist enorm hoch, und die meisten Blöcke werden von großen Mining-Pools mit gebündelten Rechenleistungen gefunden.  
+                        Zwar gibt es immer wieder Berichte von glücklichen Einzelpersonen, die mit einem kleinen Miner einen Block gefunden und die volle Blockbelohnung (aktuell 6,25 BTC) erhalten haben – diese Fälle sind jedoch äußerst selten und vergleichbar mit einem Lottogewinn.
+                    </p>
+                    <p>
+                        <strong>Solomining ist daher eher als Spielerei oder Lotterie zu verstehen.</strong>  
+                        Der finanzielle Ertrag ist für die meisten kaum realistisch, doch der eigentliche Wert liegt oft woanders:  
+                        Solomining bietet eine hervorragende Möglichkeit, den Mining-Prozess, die Funktionsweise der Proof-of-Work-Blockchain und die Bedeutung von Hashrate und Schwierigkeit zu verstehen.  
+                        Es ist also besonders für Technik-Interessierte und Bitcoin-Enthusiasten eine spannende Erfahrung.
+                    </p>
+                    <p>
+                        Wer jedoch darauf hofft, mit einem einzelnen Nerdminer oder Bitaxe regelmäßig Blöcke zu finden und damit Gewinne zu erzielen, sollte seine Erwartungen realistisch einschätzen – und die geringe Chance auf einen „Jackpot“ als netten Nebeneffekt betrachten.
+                    </p>
+                    <h2>Disclaimer</h2>
+                    <p>
+                        Die berechneten Effizienzwerte sind Richtwerte und können je nach individuellen Gegebenheiten abweichen. 
+                        Die tatsächliche Effizienz hängt von vielen Faktoren ab, darunter die Stromkosten, die Umgebungstemperatur, die Netzwerk-Schwierigkeit und die individuelle Konfiguration des Miners. 
+                        Die hier dargestellten Werte dienen lediglich als Anhaltspunkt und können keine individuelle Beratung ersetzen.
+                    </p>
+                    <p>
+                        Die Daten für die Miner stammen aus öffentlich zugänglichen Quellen und können sich ändern. 
+                        Die Preise sind Durchschnittswerte und können je nach Händler und Verfügbarkeit variieren. 
+                        Für die Richtigkeit der Angaben wird keine Gewähr übernommen.
+                    </p>
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+
+                </article>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>

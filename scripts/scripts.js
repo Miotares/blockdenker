@@ -2,6 +2,116 @@ function getBasePath() {
     return "/"; // Absoluter Pfad zur Wurzel der Website
 }
 
+window.miners = [
+    { name: 'Bitaxe Gamma 601', hashrate: 1.2, unit: 'TH', consumption: 15, price: 200 },
+    { name: 'Bitaxe Supra', hashrate: 750, unit: 'GH', consumption: 15, price: 160 },
+    { name: 'NerdAxe Ultra', hashrate: 500, unit: 'GH', consumption: 12, price: 150 },
+    { name: 'LuckyMiner V6', hashrate: 500, unit: 'GH', consumption: 13, price: 190 },
+    { name: 'BitAxe Ultra', hashrate: 425, unit: 'GH', consumption: 20, price: 120 },
+    { name: 'LuckyMiner V7', hashrate: 1, unit: 'TH', consumption: 30, price: 250 },
+    { name: 'Avalon Nano', hashrate: 4, unit: 'TH', consumption: 140, price: 270 },
+    { name: 'Nerdaxe', hashrate: 500, unit: 'GH', consumption: 19, price: 250 },
+    { name: 'Nerdqaxe', hashrate: 2.5, unit: 'TH', consumption: 50, price: 500 },
+    { name: 'Bitaxe Hex', hashrate: 3, unit: 'TH', consumption: 50, price: 600 },
+    { name: 'LuckyMiner V5', hashrate: 210, unit: 'GH', consumption: 15, price: 180 },
+    { name: 'Nerdminer', hashrate: 78, unit: 'kH', consumption: 1.6, price: 60 },
+    { name: 'Nerdminer 2,8 Zoll', hashrate: 55, unit: 'kH', consumption: 1.6, price: 60 },
+    { name: 'GIGA Nerdminer', hashrate: 221, unit: 'kH', consumption: 4, price: 160 },
+];
+
+const unitFactors = { 'kH': 1e-9, 'MH': 1e-6, 'GH': 1e-3, 'TH': 1 };
+
+function calculateEfficiency(hashrate, unit, consumption, price) {
+    const hashrateInTH = hashrate * unitFactors[unit];
+    if (consumption > 0 && price > 0) {
+        return ((hashrateInTH / (consumption * price)) * 10000).toFixed(2);
+    }
+    return '0.00';
+}
+
+window.createRow = function(miner) {
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+        <td>${miner.name}</td>
+        <td><input type="number" class="hashrate" value="${miner.hashrate}" step="any"></td>
+        <td>
+            <select class="unit">
+                <option value="kH">kH/s</option>
+                <option value="MH">MH/s</option>
+                <option value="GH" ${miner.unit === 'GH' ? 'selected' : ''}>GH/s</option>
+                <option value="TH" ${miner.unit === 'TH' ? 'selected' : ''}>TH/s</option>
+            </select>
+        </td>
+        <td><input type="number" class="consumption" value="${miner.consumption}" step="any"></td>
+        <td><input type="number" class="price" value="${miner.price}" step="any"></td>
+        <td class="efficiency"></td>
+    `;
+
+    row.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', () => updateEfficiency(row));
+    });
+
+    updateEfficiency(row);
+    return row;
+}
+
+function updateEfficiency(row) {
+    const hashrate = parseFloat(row.querySelector('.hashrate').value) || 0;
+    const unit = row.querySelector('.unit').value;
+    const consumption = parseFloat(row.querySelector('.consumption').value) || 0;
+    const price = parseFloat(row.querySelector('.price').value) || 0;
+
+    const efficiency = calculateEfficiency(hashrate, unit, consumption, price);
+    const efficiencyCell = row.querySelector('.efficiency');
+    efficiencyCell.innerText = efficiency;
+
+    updateColors();
+}
+
+function updateColors() {
+    const efficiencyCells = Array.from(document.querySelectorAll('.efficiency'));
+    const efficiencies = efficiencyCells.map(cell => parseFloat(cell.innerText) || 0);
+
+    const minEff = Math.min(...efficiencies);
+    const maxEff = Math.max(...efficiencies);
+
+    efficiencyCells.forEach(cell => {
+        const value = parseFloat(cell.innerText) || 0;
+
+        if (minEff === maxEff) {
+            cell.style.backgroundColor = 'white';
+            return;
+        }
+
+        const hue = ((value - minEff) / (maxEff - minEff)) * 120;
+        const saturation = 70;
+        const lightness = 50;
+
+        cell.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        cell.style.color = value > (minEff + maxEff) / 2 ? 'black' : 'white';
+    });
+}
+
+window.initializeMinerTable = function() {
+    console.log('✅ initializeMinerTable() AUFGERUFEN!');
+    const minerBody = document.getElementById('minerBody');
+    if (!minerBody) {
+        console.warn('⚠️ Abbruch, weil minerBody nicht da ist');
+        return;
+    }
+
+    minerBody.innerHTML = ''; // Sicherstellen, dass nichts doppelt ist
+    console.log('🛠️ Fülle jetzt die Tabelle...');
+    window.miners.forEach(miner => {
+        const row = createRow(miner);
+        console.log('➕ Zeile hinzugefügt:', row);
+        minerBody.appendChild(row);
+    });
+
+    updateColors();
+};
+
 function scrollToTopInstant() {
     window.scrollTo(0, 0);
 }
@@ -200,8 +310,6 @@ function setActiveNav(path = window.location.pathname) {
     });
 }
 
-
-
 // ✅ AJAX Seitenladefunktion für Seamless Navigation
 async function loadPage(url, updateHistory = true) {
     try {
@@ -225,7 +333,6 @@ async function loadPage(url, updateHistory = true) {
 
         document.getElementById("content").innerHTML = newContent.innerHTML;
 
-        // CSS Stylesheets sicherstellen
         const stylesheets = doc.querySelectorAll("link[rel='stylesheet']");
         stylesheets.forEach(sheet => {
             if (!document.querySelector(`link[href="${sheet.href}"]`)) {
@@ -240,12 +347,39 @@ async function loadPage(url, updateHistory = true) {
             history.pushState(null, "", url);
         }
 
+        // 💡 NEU: Prüfe direkt nach dem DOM-Einfügen, ob minerBody schon da ist!
+        const minerBody = document.getElementById('minerBody');
+        if (minerBody && minerBody.children.length === 0) {
+            console.log('⚙️ minerBody direkt gefunden – fülle Tabelle!');
+            initializeMinerTable();
+        } else {
+            console.log('⏳ Warte mit MutationObserver auf minerBody...');
+            const targetNode = document.getElementById('content');
+            const config = { childList: true, subtree: true };
+
+            const observer = new MutationObserver((mutationsList, observer) => {
+                const minerBodyDynamic = document.getElementById('minerBody');
+                if (minerBodyDynamic && minerBodyDynamic.children.length === 0) {
+                    console.log('🚀 minerBody erkannt durch MutationObserver!');
+                    initializeMinerTable();
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(targetNode, config);
+        }
+
         setActiveNav();
         generateTableOfContents();
         initTocClickHandler();
         scrollToTopInstant();
-        toggleScrollToTopButton();
-        } catch (error) {
+        try {
+            toggleScrollToTopButton();
+        } catch (e) {
+            console.warn('⚠️ toggleScrollToTopButton nicht verfügbar:', e);
+        }
+
+    } catch (error) {
         console.error("❌ Fehler beim Laden der Seite:", error);
     }
 }
@@ -446,6 +580,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     // initScrollSpy(); // Optional, falls du das nochmal versuchst
 
     document.body.classList.add('loaded');
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const minerBody = document.getElementById('minerBody');
+    if (minerBody && minerBody.children.length === 0) {
+        console.log('🔄 DOMContentLoaded: Fülle Tabelle beim direkten Seitenaufruf');
+        initializeMinerTable();
+    }
 });
 
 window.loadPage = loadPage; // Globale Funktion

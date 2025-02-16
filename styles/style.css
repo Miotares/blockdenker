@@ -1819,3 +1819,61 @@ h1::before, h2::before {
     text-decoration: underline;
 }
 
+.comparison-table input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comparison-table input[type="number"]:focus {
+    border-color: #f7931a;
+    outline: none;
+    box-shadow: 0 0 5px rgba(247, 147, 26, 0.5);
+}
+
+.comparison-table select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.comparison-table select:focus {
+    border-color: #f7931a;
+    outline: none;
+}
+
+.comparison-table input[type="number"],
+.comparison-table select {
+    width: 100%; /* Wichtig: Füllt die gesamte Tabellenzelle */
+    box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.efficiency {
+    transition: background-color 0.3s ease;
+}
+
+.solo-miner-box .article-box {
+    max-width: none; /* Falls es auf der Seite limitiert ist */
+    width: 100%; /* Oder eine andere Breite, je nachdem was du willst */
+}
+
+.solo-miner-box .article-box p {
+    max-width: none; /* Damit der Paragraph nicht künstlich begrenzt wird */
+    width: 100%; /* Optional */
+}
+
