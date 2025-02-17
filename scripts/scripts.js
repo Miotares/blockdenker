@@ -335,6 +335,11 @@ async function loadPage(url, updateHistory = true) {
 
         document.getElementById("content").innerHTML = newContent.innerHTML;
 
+        const newTitle = doc.querySelector('title');
+        if (newTitle) {
+            document.title = newTitle.innerText;
+        }
+
         const stylesheets = doc.querySelectorAll("link[rel='stylesheet']");
         stylesheets.forEach(sheet => {
             if (!document.querySelector(`link[href="${sheet.href}"]`)) {
