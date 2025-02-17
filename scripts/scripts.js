@@ -306,6 +306,8 @@ function setActiveNav(path = window.location.pathname) {
             link.classList.add("active");
         } else if (path.startsWith("/pages/spenden/") && linkPath.endsWith("/spenden/")) {
             link.classList.add("active");
+        } else if (path.startsWith("/pages/tools/") && linkPath.endsWith("/tools/")) {
+            link.classList.add("active");
         }
     });
 }
