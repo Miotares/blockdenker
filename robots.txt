@@ -3,11 +3,13 @@ Disallow: /components/
 Disallow: /scripts/
 Disallow: /styles/
 Disallow: /images/
+Disallow: /templates/
 
 Allow: /pages/
 Allow: /pages/resources/
-Allow: /articles/
-Allow: /wallets.html
-Allow: /bitcoin-vs-fiat.html
+Allow: /pages/articles/
+Allow: /pages/tools/
+Allow: /pages/tutorials/
+Allow: /pages/knowledge/
 
 Sitemap: https://blockdenker.de/sitemap.xml

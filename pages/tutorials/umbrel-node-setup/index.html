@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags -->
+    <meta name="title" content="Eigene Bitcoin Umbrel Full Node aufsetzen – Schritt-für-Schritt-Anleitung | Blockdenker">
+    <meta name="description" content="Erfahre, wie du deine eigene Bitcoin Full Node mit Umbrel und einem Raspberry Pi aufsetzt. Schritt-für-Schritt-Anleitung für mehr Unabhängigkeit und Sicherheit.">
+    <meta name="keywords" content="Bitcoin Node, Umbrel Node, Full Node einrichten, Raspberry Pi Node, Bitcoin Privatsphäre, Umbrel Setup, eigene Bitcoin Node, Bitcoin Sicherheit, Blockchain Synchronisation">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (Facebook, LinkedIn etc.) -->
+    <meta property="og:title" content="Eigene Bitcoin Umbrel Full Node aufsetzen – Schritt-für-Schritt-Anleitung">
+    <meta property="og:description" content="Lerne, wie du eine eigene Bitcoin Full Node mit Umbrel auf deinem Raspberry Pi installierst. Mehr Kontrolle, Privatsphäre und finanzielle Unabhängigkeit.">
+    <meta property="og:image" content="https://blockdenker.de/pages/tutorials/umbrel-node-setup/images/thumbnail.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tutorials/umbrel-node-setup/">
+    <meta property="og:type" content="article">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eigene Bitcoin Umbrel Full Node aufsetzen – Schritt-für-Schritt-Anleitung">
+    <meta name="twitter:description" content="Installiere deine eigene Bitcoin Full Node mit Umbrel und Raspberry Pi. Mehr Sicherheit, Privatsphäre und Unabhängigkeit – verständlich erklärt.">
+    <meta name="twitter:image" content="https://blockdenker.de/pages/tutorials/umbrel-node-setup/images/thumbnail.png">
+
+    <title>Eigene Bitcoin Umbrel Full Node aufsetzen | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+    <!-- Header -->
+    <div id="header-container"></div>
+    <!-- Content -->
+    <div id="content">
+        <div class="article-container">
+            <aside class="toc-container">
+                <h3>Inhaltsverzeichnis</h3>
+                <ul id="table-of-contents">
+                    <!-- Hier wird das ToC per JavaScript eingefügt -->
+                </ul>
+            </aside>
+            <article class="article-box">
+                <section  class="section-article">
+                <p class="back-link"><a href="/pages/tutorials/">← Zurück zu den Tutorials</a></p>
+
+                <h1>Eigene Bitcoin Umbrel Full Node aufsetzenn</h1>
+                <p class="article-date"><strong>Veröffentlicht am:</strong> 117. Februar 2025</p>
+
+                <div class="article-image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/thumbnail.png" alt="Bitcoin Bild" class="article-thumbnail">
+                </div>
+
+                <p>Eine <strong>Bitcoin-Node</strong> ist ein Knotenpunkt im dezentralen Netzwerk, der die gesamte <strong>Blockchain</strong> speichert und jede Transaktion unabhängig überprüft. Wer eine eigene Node betreibt, trägt zur <strong>Sicherheit und Dezentralität</strong> des Netzwerks bei – und vor allem: Er verlässt sich nicht auf Dritte, sondern <strong>verifiziert selbst</strong>.</p>
+                <p>Wahre finanzielle Souveränität bedeutet, <strong>nicht nur Bitcoin zu besitzen</strong>, sondern auch <strong>eigene Transaktionen zu prüfen</strong> und <strong>niemandem vertrauen zu müssen</strong>. Eine Node ist daher für echte Bitcoiner <strong>kein Hobby, sondern Pflicht</strong>.</p><hr>
+                <h2>Schritt 1 - Hardware und Software</h2>
+                <p>Um deine <b>eigene Umbrel Bitcoin Full Node</b> aufzusetzem, benötigst du folgende Hardware:</p>
+                <ul>
+                    <li>Einen <a href="https://amzn.to/4hA5IEm" target="_blank">Raspberry Pi 5 8GB RAM (Einplatinencomputer)</a> (Modelle wie Pi 4 4/8GB oder Pi 5 8GB klappen auch)</li>
+                    <li>Ein <a href="https://amzn.to/43131aq" target="_blank">Raspberry Pi Netzteil</a></li>
+                    <li>Eine <a href="https://amzn.to/3CRHEOi" target="_blank">Micro-SD Karte</a></li>
+                    <li>Eine <a href="https://amzn.to/4bkH1K1" target="_blank">Interne Festplatte</a>(minimum 1TB, besser wären 2TB)</li>
+                    <li>Ein <a href="https://amzn.to/42VY6rd" target="_blank">schönes Raspberry Pi Gehäuse</a>(optional)</li>
+                </ul>
+                <p>Auch folgende <b>Software</b> wird benötigt:</p>
+                <ul>
+                    <li>Das <a href="https://download.umbrel.com/umbrel-os.zip" target="_blank">UmbrelOS Betriebssystem</a> (alternativ bei <a href="https://github.com/getumbrel/umbrel" target="_blank">Github</a>)</li>
+                    <li><a href="https://etcher.balena.io/" target="_blank">balenaEtcher</a> zum flashen der SD-Karte</li>
+                </ul>
+                <hr>
+                <h2>Schritt 2 - SD-Karte vorbereiten</h2>
+                <p>Lade dir UmbrelOS und balenaEtcher aus dem Schritt vorher herunter. Installiere balenaEtcher und Starte es.</p>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/balena-etcher.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <ol>
+                    <li>Bei "Flash from file" wähle das zuvor heruntergeladene UmbrelOS</li>
+                    <li>Bei "Select target" wählst du deine SD-Karte</li>
+                    <li>Klicke anschließend auf "Flash!". Deine SD-Karte wird mit dem UmbrelOS überschrieben.</li>
+                </ol>
+                <hr>
+                <h2>Schritt 3 - Umbrel einrichten</h2>
+                <p>Baue deinen Raspberry Pi mit Case und Festplatte zusammen, aber noch nicht an den Strom anschließen. Dann:</p>
+                <ol>
+                    <li>Stecke deine geflashte SD-Karte in den Slot im Raspberry Pi</li>
+                    <li>Vebinde deinen Raspberry Pi mit einem LAN-Kabel an dein lokales Netzwerk (WLAN können wir später einrichten)</li>
+                    <li>Sobald du den Raspberry Pi startest, wird UmbrelOS auf dem Pi installiert.</li>
+                    <li>Nach wenigen Minuten solltest du auch darauf zugreifen können. Gebe hierzu auf deinem Rechner (muss im gleichen Netzwerk sein) <code>umbrel.local</code> in die Adresszeile ein.</li>
+                    <li>Durchlaufe nun den Einrichtungsprozess!</li>
+                </ol>
+                <hr>
+                <h3>WLAN einrichten</h3>
+                <p>Navigiere in die Umbrel Settings, dort findest du die Option Wi-Fi. Hier kannst du nun dein WLAN-Netzwerk einrichten. Sobald du dies eingerichtet hast, kannst du das LAN-Kabel auch wieder abnehmen.</p>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/wifi-umbrel-settings.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <hr>
+                <h2>Schritt 4 - Bitcoin Node installieren</h2>
+                <p>Um deinen Umbrel nun zu einer Bitcoin Node zu machen, gehe in den Appstore und suche nach "Bitcoin Node"</p>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/umbrel-bitcoin-node-appstore.png" class="article-image-container">
+                    <figcaption class="image-caption"></figcaption>
+                </figure>
+                <p>Klicke auf "installieren" und öffne die App. Deine Bitcoin Node startet nun automatisch die Synchronisierung. Es muss zunächst die gesamte Blockchain herunterladen (ca. 730GB). Die Synchronisation kann durchaus einige Tage in Anspruch nehmen. Je nachdem, welchen Pi du gewählt hast, kann es länger dauern.</p>
+                <p>Um den Synchronisationsprozess etwas zu beschleunigen, kannst du innerhalb deiner Bitcoin Node in die Settings (<b>drei Punkte -> Advanced Settings -> Optimization</b>) deinen Cache anpassen. Probiere einfach mal ein bisschen herum, was für dich und deinen Pi am Besten funktioniert.</p>
+                
+                <figure class="image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/bitcoin-node-optimierung.png" class="article-image-container">
+                    <figcaption class="image-caption">Passe deinen Cache hier etwas an.</figcaption>
+                </figure>
+                <figure class="image-container">
+                    <img src="/pages/tutorials/umbrel-node-setup/images/bitcoin-node.png" class="article-image-container">
+                    <figcaption class="image-caption">So sieht deine Node aus, wenn sie fertig synchronisiert ist.</figcaption>
+                </figure>
+                <p>Herzlichen Glückwunsch, du bist jetzt ein eigener Node Betreiber und ein Stück weiter unabhängig von Dritten!</p>
+
+                <p class="back-link"><a href="/pages/tutorials/">← Zurück zu den Tutorials</a></p>
+
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+</body>
+</html>

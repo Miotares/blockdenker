@@ -425,6 +425,7 @@ footer nav ul li a:hover {
     text-align: justify !important;
     hyphens: auto;
     word-spacing: -0.3px; /* Kannst du zusätzlich kombinieren */
+    
 }
 
 .article-box a {
@@ -1240,7 +1241,6 @@ header {
         align-items: center;
         text-align: left;
         justify-content: flex-start; /* Wichtig */
-        margin-left: 12px;
     }
 
     header h1 span {
@@ -1898,4 +1898,70 @@ html, body {
     padding-top: 20px;
     font-size: 14px;
     margin-top: auto; /* WICHTIG: Falls noch drin, kannst du es entfernen */
+}
+
+@media (max-width: 768px) {
+    .comparison-table {
+        font-size: 12px;
+    }
+
+    .comparison-table th,
+    .comparison-table td,
+    .comparison-table input,
+    .comparison-table select {
+        font-size: 12px;
+        padding: 6px; /* Weniger Innenabstand */
+    }
+
+    .comparison-table input[type="number"],
+    .comparison-table select {
+        padding: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .solo-miner-box .article-box {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+.article-box {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+    .solo-miner-box .article-box p,
+    .solo-miner-box .article-box h2,
+    .solo-miner-box .article-box .math-box {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .article-box p,
+    .solo-miner-box .article-box h2,
+    .solo-miner-box .article-box .math-box {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #ticker {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Sorgt für gleichmäßige Verteilung */
+        padding: 0 5px; /* Abstand links und rechts */
+    }
+
+    #ticker span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1 1 auto; /* Optional, falls du willst, dass die Spalten etwas flexibler sind */
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
 }
