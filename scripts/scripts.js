@@ -312,6 +312,26 @@ function setActiveNav(path = window.location.pathname) {
     });
 }
 
+async function generateHash() {
+    const input = document.getElementById("inputText").value;
+    const hash = await sha256(input);
+    document.getElementById("outputHash").value = hash;
+}
+
+async function sha256(message) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+// Event Listener für "input", damit sich der Hash sofort aktualisiert
+document.addEventListener("DOMContentLoaded", function () {
+    const inputField = document.getElementById("inputText");
+    inputField.addEventListener("input", generateHash);
+});
+
 // ✅ AJAX Seitenladefunktion für Seamless Navigation
 async function loadPage(url, updateHistory = true) {
     try {
@@ -334,6 +354,11 @@ async function loadPage(url, updateHistory = true) {
         }
 
         document.getElementById("content").innerHTML = newContent.innerHTML;
+
+        const inputField = document.getElementById("inputText");
+        if (inputField) {
+            inputField.addEventListener("input", generateHash);
+        }
 
         const newTitle = doc.querySelector('title');
         if (newTitle) {

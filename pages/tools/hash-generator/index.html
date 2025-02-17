@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags für hash-generator.html -->
+    <meta name="title" content="SHA-256 Hash Generator – Erstelle Bitcoin Hashes online | Blockdenker">
+    <meta name="description" content="Erstelle Hashes mit dem SHA-256 Algorithmus. Verstehe, wie Bitcoin-Hashes funktionieren – einfach Text eingeben und den Hash generieren.">
+    <meta name="keywords" content="SHA-256 Generator, Hash Generator, Bitcoin Hash, Hashes erstellen, SHA256 online, Blockchain Hash, Hashing Tool, Bitcoin Veranschaulichung">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (für Facebook, LinkedIn & Co.) -->
+    <meta property="og:title" content="SHA-256 Hash Generator – Erstelle Bitcoin Hashes online">
+    <meta property="og:description" content="Gebe Text ein und erhalte den SHA-256 Hash. Perfekt, um die Funktionsweise von Bitcoin-Hashes zu verstehen.">
+    <meta property="og:image" content="https://blockdenker.de/images/thumbnail-tools.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tools/hash-generator.html">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SHA-256 Hash Generator – Erstelle Bitcoin Hashes online">
+    <meta name="twitter:description" content="Verstehe Hashing und die SHA-256 Verschlüsselung – Text eingeben und Hash generieren. Perfekt für Bitcoin-Einsteiger.">
+    <meta name="twitter:image" content="https://blockdenker.de/images/thumbnail-tools.png">
+
+    <title>SHA-256 Hash Generator – Erstelle Bitcoin Hashes online | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+    <script defer src="/scripts/hash-generator.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="solo-miner-box">
+            <div class="article-container">
+                <article class="article-box">
+                    <section class="section-article">
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+
+                    <h1>SHA-256 Hash Generator</h1>
+                    <p>Gib einen beliebigen Text ein, um den entsprechenden SHA-256 Hash zu generieren.</p>
+
+                        <textarea id="inputText" class="tool-input" placeholder="Text eingeben..."></textarea>
+                    
+                        <p><strong>SHA-256 Hash:</strong></p>
+                        <textarea id="outputHash" class="tool-output" readonly></textarea>
+                    
+                        <h2>Was ist ein Hash?</h2>
+                        <p>Ein Hash ist das Ergebnis einer mathematischen Funktion, die aus beliebigen Eingabedaten eine Zeichenkette fester Länge erstellt. Der SHA-256-Algorithmus, der auch bei Bitcoin verwendet wird, erzeugt immer eine 64-stellige hexadezimale Zahl, unabhängig davon, wie lang oder kurz die Eingabe ist. Schon eine minimale Änderung der Eingabe führt zu einem komplett anderen Hash.</p>
+                        <p>Hashes dienen der Überprüfung von Datenintegrität und werden in vielen Bereichen der IT-Sicherheit eingesetzt. Bei Bitcoin spielen sie eine zentrale Rolle in der Blockchain, da jede Transaktion und jeder Block gehasht wird.</p>
+                        <h3>Einbahnstraße – One-Way-Funktion</h3>
+                        <p>Ein entscheidender Punkt: Hashfunktionen sind sogenannte <strong>One-Way-Funktionen</strong>. Das bedeutet, dass man aus dem Hash nicht zurückrechnen kann, welche Eingabe ursprünglich verwendet wurde. Es ist also eine Einbahnstraße: Die Eingabe erzeugt einen Hash, aber der Hash verrät nichts über die Eingabe.</p>
+                        <p>Das macht Hashes zu einem wichtigen Werkzeug für Sicherheit und Privatsphäre. Zum Beispiel bei Passwörtern: Statt das Passwort selbst zu speichern, wird nur der Hash gespeichert. Beim Login wird das eingegebene Passwort gehasht und mit dem gespeicherten Hash verglichen. Selbst wenn der Hash gestohlen wird, kann daraus das eigentliche Passwort nicht einfach zurückgerechnet werden.</p>
+                        <p>Gerade bei Bitcoin ist das wichtig: Die Adressen und Transaktionen sind öffentlich sichtbar, aber die privaten Schlüssel (die die Kontrolleb über die Coins ermöglichen) bleiben geheim. Die Hashfunktion sorgt dafür, dass die privaten Schlüssel nie preisgegeben werden müssen.</p>
+                        <h2>Wie sieht ein Bitcoin Block-Hash aus?</h2>
+                        <p>Ein Bitcoin Block-Hash ist das Ergebnis des Proof-of-Work-Prozesses. Miner versuchen, eine Zahl (Nonce) zu finden, sodass der Hash des Blocks bestimmte Bedingungen erfüllt (z. B. mit einer bestimmten Anzahl an Nullen beginnt). Ein Beispiel für einen echten Block-Hash:</p>
+                        <div class="math-box">
+                            <p><code><a href="https://mempool.space/de/block/000000000000000000021d2eb546ad9a9d7ffa9c345e36ca3acb4d7e2d0b00f5" target="_blank">000000000000000000021d2eb546ad9a9d7ffa9c345e36ca3acb4d7e2d0b00f5</a></code></p>
+                        </div>
+                        <p>Diese führenden Nullen zeigen, dass der Miner eine Lösung für das mathematische Rätsel gefunden hat. Je mehr Nullen, desto schwieriger war die Berechnung.</p>
+
+                        <h2>Was machen Miner eigentlich genau?</h2>
+                        <p>Vereinfacht gesagt machen Bitcoin-Miner nichts anderes, als die Block-Daten durch eine Hashfunktion (SHA-256) zu schicken – genau wie du es oben mit deinem Text im Hash-Generator gemacht hast. Der entscheidende Unterschied ist, dass die Miner dabei die sogenannte <strong>Nonce</strong> (Number Used Once) ständig verändern. Die Nonce ist eine Zahl, die immer wieder angepasst wird, bis der daraus entstehende Hash die gewünschten Voraussetzungen erfüllt – also z. B. mit einer bestimmten Anzahl an Nullen beginnt.</p>
+                        <p>Die Miner probieren also Millionen oder sogar Milliarden von Nonces pro Sekunde durch, bis sie auf einen passenden Hash stoßen. Dieser Prozess wird Proof-of-Work genannt.</p>
+
+                        <h2>Was bedeuten Hashrate und die Einheiten wie TH/s?</h2>
+                        <p>Die Rechengeschwindigkeit der Miner wird in <strong>Hashes pro Sekunde (H/s)</strong> gemessen. Ein Hash ist dabei die einmalige Berechnung der SHA-256-Funktion mit bestimmten Block-Daten und einer Nonce. Da Miner extrem viele dieser Versuche pro Sekunde durchführen, spricht man meist von folgenden Einheiten:</p>
+                        <ul>
+                            <li><strong>kH/s</strong> – Kilohashes pro Sekunde (1.000 Hashes pro Sekunde)</li>
+                            <li><strong>MH/s</strong> – Megahashes pro Sekunde (1.000.000 Hashes pro Sekunde)</li>
+                            <li><strong>GH/s</strong> – Gigahashes pro Sekunde (1.000.000.000 Hashes pro Sekunde)</li>
+                            <li><strong>TH/s</strong> – Terahashes pro Sekunde (1.000.000.000.000 Hashes pro Sekunde)</li>
+                            <li><strong>PH/s</strong> – Petahashes pro Sekunde (1.000.000.000.000.000 Hashes pro Sekunde)</li>
+                            <li><strong>EH/s</strong> – Exahashes pro Sekunde (1.000.000.000.000.000.000 Hashes pro Sekunde)</li>
+                        </ul>
+
+                        <h2>Was bedeutet die Bitcoin Netzwerk-Hashrate?</h2>
+                        <p>Die <strong>Netzwerk-Hashrate</strong> ist die geschätzte gesamte Rechenleistung, die weltweit im Bitcoin-Netzwerk eingesetzt wird, um neue Blöcke zu finden. Sie wird ebenfalls in TH/s, PH/s oder EH/s angegeben. Stand 2024 liegt die Netzwerk-Hashrate meist bei über <strong>500 EH/s</strong>. Das bedeutet, dass weltweit pro Sekunde mehr als <strong>500 Trillionen Hashes</strong> berechnet werden!</p>
+                        <p>Die hohe Hashrate zeigt, wie viel Energie und Rechenleistung ins Netzwerk fließt – und sorgt gleichzeitig für die Sicherheit von Bitcoin. Je höher die Hashrate, desto schwieriger ist es für Angreifer, das Netzwerk zu manipulieren.</p>
+
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
+
+

@@ -1120,10 +1120,6 @@ section h2 {
     text-align: center !important;
 }
 
-.article-box h1 {
-    text-align: left;
-}
-
 .section-article h3 {
     text-align: left;
 }
@@ -1735,6 +1731,8 @@ h1::before, h2::before {
     font-weight: bold;
     margin-top: 50px;
     margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
     text-align: left;
     border-bottom: 4px solid #f7931a;
     padding-bottom: 8px;
@@ -1760,6 +1758,8 @@ h1::before, h2::before {
     font-weight: bold;
     margin-top: 30px;
     margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
     border-left: 3px solid #f7931a;
     padding-left: 8px;
     background-color: #f9f9f9;
@@ -1883,6 +1883,7 @@ html, body {
 
 #content {
     flex-grow: 1;
+    flex: 1; /* Der Hauptinhalt füllt den verfügbaren Platz */
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Inhalte oben halten */
@@ -1960,4 +1961,44 @@ html, body {
 ul {
     list-style-type: none;
     padding-left: 0;
+}
+
+.tool-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    background-color: #fff; /* Weißer Hintergrund */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Sicherstellen, dass es nicht größer als der Elterncontainer wird */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tool-label {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.tool-input,
+.tool-output {
+    width: 100%;
+    max-width: 100%; /* Damit es sich der SectionArticle anpasst */
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fafafa;
+    font-family: monospace;
+    resize: none;
+    box-sizing: border-box; /* Wichtig, damit padding und border in die Breite eingerechnet werden */
+
+}
+
+.tool-output {
+    height: 100px;
+    background-color: #f3f3f3;
 }
