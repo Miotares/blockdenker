@@ -1985,6 +1985,9 @@ ul {
 
 .tool-input,
 .tool-output {
+    appearance: none; /* Entfernt die Safari-Standarddarstellung */
+    -webkit-appearance: none; /* Für ältere Safari-Versionen */
+    -moz-appearance: none; /* Falls irgendwann nötig */
     width: 100%;
     max-width: 100%; /* Damit es sich der SectionArticle anpasst */
     padding: 12px;
