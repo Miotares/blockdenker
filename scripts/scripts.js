@@ -2,6 +2,171 @@ function getBasePath() {
     return "/"; // Absoluter Pfad zur Wurzel der Website
 }
 
+async function loadWordlist() {
+    const response = await fetch('/pages/tools/seed-generator/english.txt');
+    const text = await response.text();
+    return text.split('\n').map(word => word.trim());
+}
+
+let bip39Wordlist = [];
+
+async function initializeWordlist() {
+    bip39Wordlist = await loadWordlist();
+}
+
+function generateSeed(wordsCount = 12) {
+    if (bip39Wordlist.length === 0) {
+        console.error('⚠️ Wortliste noch nicht geladen!');
+        return 'Fehler: Wortliste nicht geladen!';
+    }
+
+    const seed = [];
+    for (let i = 0; i < wordsCount; i++) {
+        const randomIndex = Math.floor(Math.random() * bip39Wordlist.length);
+        seed.push(bip39Wordlist[randomIndex]);
+    }
+    return seed.join(' ');
+}
+
+function initSeedGenerator() {
+    const twelveWordsButton = document.getElementById('twelve-words');
+    const twentyFourWordsButton = document.getElementById('twenty-four-words');
+    const generateSeedButton = document.getElementById('generate-seed-button');
+    const seedOutput = document.getElementById('seed-output');
+    const seedRawOutput = document.getElementById('seed-raw-output');
+
+    if (!twelveWordsButton || !twentyFourWordsButton || !generateSeedButton) {
+        console.warn('⚠️ Seed Generator Buttons nicht gefunden!');
+        return;
+    }
+
+    let wordCount = twelveWordsButton.classList.contains('active') ? 12 : 24;
+
+    twelveWordsButton.addEventListener('click', () => {
+        wordCount = 12;
+        twelveWordsButton.classList.add('active');
+        twentyFourWordsButton.classList.remove('active');
+    });
+
+    twentyFourWordsButton.addEventListener('click', () => {
+        wordCount = 24;
+        twentyFourWordsButton.classList.add('active');
+        twelveWordsButton.classList.remove('active');
+    });
+
+    generateSeedButton.addEventListener('click', function () {
+        const seedWords = generateSeed(wordCount).split(' ');
+        seedOutput.innerHTML = '';
+    
+        // Dynamisch Spalten festlegen: 4 auf Desktop, 2 auf Mobile
+        const columns = window.innerWidth <= 768 ? 2 : 4;
+        const rows = Math.ceil(wordCount / columns);
+    
+        const columnContainers = [];
+        for (let i = 0; i < columns; i++) {
+            const columnDiv = document.createElement('div');
+            columnDiv.classList.add('seed-column');
+            columnContainers.push(columnDiv);
+            seedOutput.appendChild(columnDiv);
+        }
+    
+        // Wörter korrekt spaltenweise füllen
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < columns; col++) {
+                const index = col * rows + row;
+                if (index < wordCount) {
+                    const wordBox = document.createElement('div');
+                    wordBox.classList.add('seed-word');
+    
+                    const numberSpan = document.createElement('span');
+                    numberSpan.classList.add('seed-word-number');
+                    numberSpan.textContent = index + 1;
+    
+                    const wordTextSpan = document.createElement('span');
+                    wordTextSpan.classList.add('seed-word-text');
+                    wordTextSpan.textContent = seedWords[index];
+    
+                    wordBox.appendChild(numberSpan);
+                    wordBox.appendChild(wordTextSpan);
+                    columnContainers[col].appendChild(wordBox);
+                }
+            }
+        }
+    
+        seedRawOutput.textContent = seedWords.join(' ');
+    });
+
+    // Sicherstellen, dass die 12-Wörter-Version standardmäßig aktiv ist
+    twelveWordsButton.click();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const twelveWordsButton = document.getElementById('twelve-words');
+    const twentyFourWordsButton = document.getElementById('twenty-four-words');
+    const generateSeedButton = document.getElementById('generate-seed-button');
+    const seedOutput = document.getElementById('seed-output');
+    const seedRawOutput = document.getElementById('seed-raw-output');
+
+    let wordCount = 12; // Standard
+    let wordlistLoaded = false;
+
+    // Umschalten zwischen 12 und 24 Wörter
+    twelveWordsButton.addEventListener('click', () => {
+        wordCount = 12;
+        twelveWordsButton.classList.add('active');
+        twentyFourWordsButton.classList.remove('active');
+    });
+
+    twentyFourWordsButton.addEventListener('click', () => {
+        wordCount = 24;
+        twentyFourWordsButton.classList.add('active');
+        twelveWordsButton.classList.remove('active');
+    });
+
+    // Seed generieren und anzeigen
+    generateSeedButton.addEventListener('click', function () {
+        const seedWords = generateSeed(wordCount).split(' ');
+    
+        // Boxen erstellen
+        seedOutput.innerHTML = '';
+    
+        const columns = 4; // Anzahl der Spalten
+        const rows = wordCount / columns; // Anzahl der Reihen pro Spalte
+    
+        const columnContainers = [];
+    
+        // 4 Spalten als Container erstellen
+        for (let i = 0; i < columns; i++) {
+            const columnDiv = document.createElement('div');
+            columnDiv.classList.add('seed-column');
+            columnContainers.push(columnDiv);
+            seedOutput.appendChild(columnDiv);
+        }
+    
+        // Wörter in die Spalten verteilen
+        for (let i = 0; i < wordCount; i++) {
+            const columnIndex = Math.floor(i / rows);
+            const wordBox = document.createElement('div');
+            wordBox.classList.add('seed-word');
+    
+            const numberSpan = document.createElement('span');
+            numberSpan.classList.add('seed-word-number');
+            numberSpan.textContent = i + 1;
+    
+            const wordTextSpan = document.createElement('span');
+            wordTextSpan.classList.add('seed-word-text');
+            wordTextSpan.textContent = seedWords[i];
+    
+            wordBox.appendChild(numberSpan);
+            wordBox.appendChild(wordTextSpan);
+            columnContainers[columnIndex].appendChild(wordBox);
+        }
+    
+        // Raw Text darunter anzeigen
+        seedRawOutput.textContent = seedWords.join(' ');
+    });
+});
+
 window.miners = [
     { name: 'Bitaxe Gamma 601', hashrate: 1.2, unit: 'TH', consumption: 15, price: 200 },
     { name: 'Bitaxe Supra', hashrate: 750, unit: 'GH', consumption: 15, price: 160 },
@@ -415,7 +580,7 @@ function initBlockchainSimulator() {
         const index = parseInt(block.getAttribute('data-index'), 10);
 
         setBlockStatus(block, 'neutral');
-        block.dataset.mined = 'false'; // Sicherheitshalber zurücksetzen
+        block.dataset.mined = 'false';
 
         if (index === 1) {
             calculateBlockHash(block).then(() => {
@@ -541,21 +706,13 @@ async function loadPage(url, updateHistory = true) {
 
         document.getElementById("content").innerHTML = newContent.innerHTML;
 
-        const inputField = document.getElementById("inputText");
-        if (inputField) {
-            inputField.addEventListener("input", generateHash);
-        }
-
-        const firstBlock = document.querySelector('.block');
-        if (firstBlock) {
-            initBlockchainSimulator();
-        }
-
+        // Setze neuen Titel
         const newTitle = doc.querySelector('title');
         if (newTitle) {
             document.title = newTitle.innerText;
         }
 
+        // Stylesheets prüfen und ggf. ergänzen
         const stylesheets = doc.querySelectorAll("link[rel='stylesheet']");
         stylesheets.forEach(sheet => {
             if (!document.querySelector(`link[href="${sheet.href}"]`)) {
@@ -566,21 +723,45 @@ async function loadPage(url, updateHistory = true) {
             }
         });
 
+        // URL in der Historie aktualisieren
         if (updateHistory) {
             history.pushState(null, "", url);
         }
 
-        // 💡 NEU: Prüfe direkt nach dem DOM-Einfügen, ob minerBody schon da ist!
+        // Eingabefeld für Hash-Funktion
+        const inputField = document.getElementById("inputText");
+        if (inputField) {
+            inputField.addEventListener("input", generateHash);
+        }
+
+        // Blockchain-Simulator initialisieren, falls vorhanden
+        const firstBlock = document.querySelector('.block');
+        if (firstBlock) {
+            initBlockchainSimulator();
+        }
+
+        // Seed Generator erkennen und initialisieren
+        const seedOutput = document.getElementById('seed-output');
+    if (seedOutput) {
+        console.log('🌱 Seed Generator erkannt – Lade Wortliste und initialisiere...');
+        if (bip39Wordlist.length === 0) {
+            await initializeWordlist(); // Lade die Wortliste nur einmal!
+        }
+        initSeedGenerator(); // Setze Event Listener für Seed Generator
+    }
+
+        // Miner-Tabelle erkennen und initialisieren
         const minerBody = document.getElementById('minerBody');
         if (minerBody && minerBody.children.length === 0) {
             console.log('⚙️ minerBody direkt gefunden – fülle Tabelle!');
             initializeMinerTable();
-        } else {
+        } else if (!minerBody) {
+            // MutationObserver nur, wenn minerBody nicht vorhanden ist
             console.log('⏳ Warte mit MutationObserver auf minerBody...');
             const targetNode = document.getElementById('content');
             const config = { childList: true, subtree: true };
 
-            const observer = new MutationObserver((mutationsList, observer) => {
+            const observer = new MutationObserver(() => {
                 const minerBodyDynamic = document.getElementById('minerBody');
                 if (minerBodyDynamic && minerBodyDynamic.children.length === 0) {
                     console.log('🚀 minerBody erkannt durch MutationObserver!');
@@ -592,10 +773,12 @@ async function loadPage(url, updateHistory = true) {
             observer.observe(targetNode, config);
         }
 
+        // Allgemeine UI-Updates nach dem Laden
         setActiveNav();
         generateTableOfContents();
         initTocClickHandler();
         scrollToTopInstant();
+
         try {
             toggleScrollToTopButton();
         } catch (e) {
@@ -806,6 +989,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     initSeamlessNavigation(); // Nahtlose Navigation aktivieren
     generateTableOfContents();
     initTocClickHandler(); // <-- HIER NEU
+    initializeWordlist()
     // initScrollSpy(); // Optional, falls du das nochmal versuchst
 
     document.body.classList.add('loaded');
@@ -823,8 +1007,6 @@ document.addEventListener("DOMContentLoaded", () => {
         initBlockchainSimulator();
     }
 });
-
-
 
 window.loadPage = loadPage; // Globale Funktion
 

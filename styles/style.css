@@ -2239,3 +2239,127 @@ input[type="range"] {
     outline: none;
     margin: 10px 0;
 }
+
+/* Toggle Switch Buttons */
+.word-count-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.word-count-toggle button {
+    flex: 1;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #f7931a;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 5px;
+}
+
+.word-count-toggle button.active {
+    background-color: #f7931a;
+    color: white;
+}
+
+.word-count-toggle button:hover {
+    background-color: #ffe0b3;
+}
+
+/* Seed Generieren Button */
+#generate-seed-button {
+    height: 42px; /* gleiche Höhe wie die "12 Wörter" und "24 Wörter" Buttons */
+    background-color: #f7931a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Kleiner Abstand nach oben */
+    margin-bottom: 15px; /* Mehr Abstand nach unten zur Seed-Box */
+}
+
+#generate-seed-button:hover {
+    background-color: #e67e00;
+}
+
+.seed-output {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Spalten */
+    gap: 8px;
+}
+
+/* Seed Box */
+.seed-output-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+.seed-word {
+    background-color: rgba(247, 147, 26, 0.1);
+    border: 1px solid #f7931a;
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    min-height: 40px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: #333;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seed-word-number {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f7931a;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+
+.seed-word-text {
+    margin-left: 32px; /* Platz für die Nummer */
+    font-size: 16px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.seed-word:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.seed-raw-output {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile Ansicht: 2 Spalten */
+@media (max-width: 768px) {
+    .seed-output-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

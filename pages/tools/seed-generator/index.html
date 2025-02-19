@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags für proof-of-work-simulator.html -->
+    <meta name="title" content="Bitcoin Seed Generator – Erstelle deine sichere Seed Phrase | Blockdenker">
+    <meta name="description" content="Generiere deine eigene 12- oder 24-Wörter Seed Phrase für Bitcoin Wallets. Verstehe die Bedeutung einer Seed Phrase und sichere deine Kryptowährungen richtig.">
+    <meta name="keywords" content="Bitcoin Seed Generator, Seed Phrase erstellen, Bitcoin Wallet Sicherheit, 12 Wörter Seed, 24 Wörter Seed, BIP39 Wörterliste, Bitcoin Backup">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (für Facebook, LinkedIn & Co.) -->
+    <meta property="og:title" content="Bitcoin Seed Generator – Erstelle deine sichere Seed Phrase">
+    <meta property="og:description" content="Generiere eine sichere Bitcoin Seed Phrase (12 oder 24 Wörter) für deine Wallet – schnell, offline und kostenlos.">
+    <meta property="og:image" content="https://blockdenker.de/images/thumbnail-seed-generator.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tools/seed-generator.html">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bitcoin Seed Generator – Erstelle deine sichere Seed Phrase">
+    <meta name="twitter:description" content="Sichere deine Bitcoin Wallet mit einer Seed Phrase. Erstelle 12 oder 24 Wörter Seed sicher und schnell.">
+    <meta name="twitter:image" content="https://blockdenker.de/images/thumbnail-seed-generator.png">
+
+    <title>Bitcoin Seed Generator | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/bip39Wordlist.js"></script>
+    <script defer src="/scripts/scripts.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="solo-miner-box">
+            <div class="article-container">
+                <article class="article-box">
+                    <section class="section-article">
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+
+                    <h1>Bitcoin Seed Generator</h1>
+
+                    <div class="word-count-toggle">
+                        <button type="button" id="twelve-words" class="active">12 Wörter</button>
+                        <button type="button" id="twenty-four-words">24 Wörter</button>
+                    </div>
+                    <button id="generate-seed-button">Seed generieren</button>
+                    
+                    <div id="seed-output" class="seed-output-box">
+                        Hier erscheint dein Seed...
+                    </div>
+                    
+                    <p id="seed-raw-output" class="seed-raw-output"> </p>
+                    <h2>Warum du diesen Seed nicht benutzen solltest</h2>
+                    <p>Die hier generierte Seed Phrase dient ausschließlich zu Demonstrationszwecken. Jeder, der diese Wörter kennt, könnte auf deine Bitcoin zugreifen. Deshalb solltest du für dein echtes Bitcoin-Wallet immer offline und in einer sicheren Umgebung eine Seed Phrase erstellen.</p>
+                    <h2>Seed Phrase – Dein einziger Zugang zu deinen Bitcoin</h2>
+                    <p>Deine Seed Phrase ist der Schlüssel zu deinem Vermögen. Verlierst du sie, verlierst du den Zugriff auf dein Wallet – für immer. Niemand kann dir helfen, deine Bitcoin wiederherzustellen. Sichere deine Wörter also gut und bewahre sie an einem sicheren Ort auf, am besten offline und physisch (z.B. auf Metall graviert oder auf Papier, fern von Feuchtigkeit und Feuer).</p>
+                    <h2>Seed online generieren – Wie riskant ist das?</h2>
+                    <p>Wenn du diesen Seed auf einem unsicheren Gerät oder in einem unsicheren Netzwerk generierst, könnten Hacker oder Schadsoftware deine Seed Phrase mitlesen. Besser: Erstelle deine Seed Phrase offline, z. B. mit einem dedizierten Gerät wie einem Hardware Wallet oder auf einem isolierten Rechner.</p>
+                    <h2>So generierst du einen sicheren Seed offline</h2>
+                    <p>Wenn du eine echte Wallet erstellen willst, mach es so:</p>
+                    <ol>
+                        <li>Trenne deinen Computer vom Internet.</li>
+                        <li>Nutze ein Open-Source-Tool wie Electrum oder ein Hardware Wallet.</li>
+                        <li>Schreibe die Wörter von Hand auf Papier oder präge sie auf Metall.</li>
+                        <li>Keine Screenshots, keine Fotos, kein Cloud-Speicher!</li>
+                    </ol>
+                    <h2>Was ist, wenn ich meine Seed Phrase verliere?</h2>
+                    <p>Verlierst du deine Seed Phrase, verlierst du den Zugang zu deinen Bitcoin – dauerhaft. Das Bitcoin-Netzwerk kennt keine Zurücksetzungsmöglichkeit! Deshalb gilt: Mehrfach sichern – aber nie digital, immer offline und sicher verwahrt.</p>
+                    <h2>Was ist BIP39?</h2>
+                    <p>Der Seed Generator basiert auf dem BIP39-Standard.
+                        Dieser sorgt dafür, dass deine Seed Phrase aus 2048 englischen Wörtern besteht.
+                        Jede Kombination dieser Wörter kann in einen privaten Schlüssel umgewandelt werden, der den Zugang zu deinen Bitcoin ermöglicht.
+                        Deshalb ist jeder Seed einzigartig und hochgradig sicher, solange er geheim bleibt.</p>
+
+
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
+
+
