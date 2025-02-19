@@ -1380,6 +1380,12 @@ body.loaded #preloader {
 }
 
 .toc-level-2 a {
+    margin-left: 7.5px; /* H2 leicht eingerückt */
+    padding-left: 0;
+    color: #747474;
+}
+
+.toc-level-3 a {
     margin-left: 15px; /* H2 leicht eingerückt */
     padding-left: 0;
     color: #747474;
@@ -2005,3 +2011,217 @@ ul {
     height: 100px;
     background-color: #f3f3f3;
 }
+
+#blockchain-simulator {
+    display: flex;
+    justify-content: space-between; /* Damit die Blöcke gleichmäßig verteilt werden */
+    flex-wrap: wrap;
+    max-width: 100%; /* Oder max-width: 1200px; */
+    margin: 0 auto; /* Zentrieren */
+    gap: 32px; /* Optional: Abstand zwischen den Blöcken */
+}
+
+.block {
+    padding: 15px;
+    background-color: #eaf4e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 300px;
+    flex: 1;
+    min-width: 280px;
+    max-width: calc((1200px - 2 * 16px) / 3); /* 1200px wie article-container */
+    box-sizing: border-box;
+    
+}
+
+.block input {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.block.valid {
+    background-color: #d4edda; /* grün */
+}
+
+.block.invalid {
+    background-color: #f8d7da; /* rot */
+}
+
+.block input[type="text"],
+.block input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.block input[type="text"].block-hash,
+.block input[type="text"].block-prev-hash {
+    background-color: #f3f3f3;
+    color: #666;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.block .mine-btn {
+    padding: 8px 12px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.block .mine-btn:hover {
+    background-color: #e68900;
+}
+
+.block label {
+    display: block;
+    text-align: left;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.blockchain-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.block textarea.block-data {
+    width: 100%;
+    height: 60px; /* Kannst du anpassen */
+    box-sizing: border-box;
+    resize: vertical; /* Falls man es noch größer ziehen können soll */
+    line-height: 1.5; /* Optional, für bessere Lesbarkeit */
+    font-family: inherit; /* Damit die gleiche Schriftart wie der Rest verwendet wird */
+
+}
+
+.block input.block-data {
+    height: 100px; /* Oder 60px, je nachdem */
+}
+
+.block.mining {
+    background-color: #f0f0f0; /* oder ein anderes Grau, falls dir das lieber ist */
+}
+
+.blockchain-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#blockchain-controls button {
+    background-color: #f7931a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  #blockchain-controls button:hover {
+    background-color: #e58317;
+  }
+  
+  #blockchain-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #666;
+  }
+
+.block-data {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #fff;
+    color: #333;
+    resize: vertical; /* Falls du das nicht willst: 'none' */
+    min-height: 60px; /* Damit es nicht zu klein ist */
+    line-height: 1.4;
+}
+.block-data:focus {
+    outline: none;
+    border-color: #f7931a;
+    box-shadow: 0 0 4px rgba(247, 147, 26, 0.5);
+}
+
+.block textarea.block-data {
+    width: 100%;
+    height: 100px; /* Hier die gewünschte Standardhöhe */
+    box-sizing: border-box;
+    resize: none; /* Entfernt die Möglichkeit, die Größe zu ändern */
+    line-height: 1.5;
+    font-family: inherit;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #f7931a;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #c77108;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #c77108;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .block h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    background: none;
+    border-left: none;
+    padding-left: 0;
+  }
+
+.block.neutral { background-color: #e0e0e0; } /* Beispiel Grau */
+.block.invalid { background-color: #fdd; }   /* Rot */
+.block.valid { background-color: #dff0d8; }  /* Grün */
+.block.mining { background-color: #e0e0e0; } /* Hellgrau */

@@ -326,6 +326,192 @@ async function sha256(message) {
     return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
+let currentDifficulty = 4; // Standardwert
+
+function updateDifficultyDisplay(value) {
+    currentDifficulty = parseInt(value, 10);
+    document.getElementById('difficultyDisplay').innerText = value;
+}
+
+async function calculateBlockHash(blockElement) {
+    if (blockElement.dataset.mined === 'true') {
+        return; // Block wurde schon gemined, keine erneute Berechnung nötig
+    }
+
+    const data = blockElement.querySelector('.block-data').value;
+    const nonce = blockElement.querySelector('.block-nonce').value.replace(/\./g, '');
+    const prevHash = blockElement.querySelector('.block-prev-hash').value;
+
+    const content = data + nonce + prevHash;
+    const hash = await sha256(content);
+
+    blockElement.querySelector('.block-hash').value = hash;
+
+    if (hash.startsWith('0'.repeat(currentDifficulty))) {
+        setBlockStatus(blockElement, 'valid');
+    } else {
+        setBlockStatus(blockElement, 'invalid');
+    }
+
+    await updateNextBlocks(blockElement);
+}
+
+async function mineBlock(blockElement) {
+    let nonce = 0;
+    let hash = '';
+    const prevHash = blockElement.querySelector('.block-prev-hash').value;
+    const data = blockElement.querySelector('.block-data').value;
+    const nonceField = blockElement.querySelector('.block-nonce');
+    const hashField = blockElement.querySelector('.block-hash');
+
+    blockElement.classList.add('mining');
+
+    while (!hash.startsWith('0'.repeat(currentDifficulty))) {
+        nonce++;
+        nonceField.value = nonce.toLocaleString('en-US');
+        hash = await sha256(data + nonce + prevHash);
+        hashField.value = hash;
+
+        await updateNextBlocks(blockElement);
+
+        if (miningStopped) {
+            setBlockStatus(blockElement, 'neutral');
+            return;
+        }
+    }
+
+    blockElement.classList.remove('mining');
+    blockElement.classList.remove('invalid');
+    blockElement.classList.add('valid');
+
+    nonceField.value = nonce.toLocaleString('en-US');
+    hashField.value = hash;
+
+    // Block endgültig "sperren" – keine weiteren Updates zulassen
+    blockElement.dataset.mined = 'true';
+    await updateNextBlocks(blockElement);
+}
+
+async function updateNextBlocks(blockElement) {
+    const currentHash = blockElement.querySelector('.block-hash').value;
+    const nextBlock = blockElement.nextElementSibling;
+
+    if (nextBlock && nextBlock.classList.contains('block')) {
+        const prevHashField = nextBlock.querySelector('.block-prev-hash');
+        const currentPrevHash = prevHashField.value;
+
+        // Nur aktualisieren, wenn der vorherige Hash sich ändert
+        if (currentPrevHash !== currentHash) {
+            prevHashField.value = currentHash;
+            await calculateBlockHash(nextBlock);
+        }
+    }
+}
+
+function initBlockchainSimulator() {
+    const blocks = document.querySelectorAll('.block');
+
+    blocks.forEach(block => {
+        const index = parseInt(block.getAttribute('data-index'), 10);
+
+        setBlockStatus(block, 'neutral');
+        block.dataset.mined = 'false'; // Sicherheitshalber zurücksetzen
+
+        if (index === 1) {
+            calculateBlockHash(block).then(() => {
+                setBlockStatus(block, 'neutral');
+            });
+        } 
+
+        block.querySelector('.block-data').addEventListener('input', async () => {
+            block.dataset.mined = 'false'; // Entsperren, wenn man Daten ändert
+            await calculateBlockHash(block);
+        });
+        
+        block.querySelector('.block-nonce').addEventListener('input', async () => {
+            block.dataset.mined = 'false'; // Entsperren, wenn man Nonce ändert
+            await calculateBlockHash(block);
+        });
+    });
+
+    const mineAllBtn = document.getElementById('mineAllBtn');
+    const stopMiningBtn = document.getElementById('stopMiningBtn');
+
+    if (mineAllBtn) {
+        mineAllBtn.addEventListener('click', mineAllBlocks);
+    } else {
+        console.warn('⚠️ mineAllBtn nicht gefunden!');
+    }
+
+    if (stopMiningBtn) {
+        stopMiningBtn.addEventListener('click', stopMining);
+    } else {
+        console.warn('⚠️ stopMiningBtn nicht gefunden!');
+    }
+}
+
+let miningStopped = false;
+
+// Mining-Funktion für alle Blöcke der Reihe nach
+async function mineAllBlocks() {
+    miningStopped = false;
+    const blocks = document.querySelectorAll('.block');
+
+    blocks.forEach(block => {
+        const nonceField = block.querySelector('.block-nonce');
+        nonceField.value = 0;
+        block.dataset.mined = 'false'; // Block entsperren für neue Berechnung
+        setBlockStatus(block, 'neutral');
+    });
+
+    document.getElementById('mineAllBtn').disabled = true;
+    document.getElementById('stopMiningBtn').disabled = false;
+
+    for (let i = 0; i < blocks.length; i++) {
+        const block = blocks[i];
+
+        if (miningStopped) {
+            console.log("⛔ Mining abgebrochen.");
+            break;
+        }
+
+        await mineBlock(block); // Deine bestehende Mine-Funktion
+    }
+
+    document.getElementById('mineAllBtn').disabled = false;
+    document.getElementById('stopMiningBtn').disabled = true;
+
+    blocks.forEach(block => calculateBlockHash(block));
+}
+
+// Mining stoppen
+function stopMining() {
+    miningStopped = true;
+    document.getElementById('mineAllBtn').disabled = false;
+    document.getElementById('stopMiningBtn').disabled = true;
+
+    const blocks = document.querySelectorAll('.block');
+    blocks.forEach(block => {
+        if (block.classList.contains('mining')) {
+            setBlockStatus(block, 'neutral');
+        }
+        block.classList.remove('mining');
+    });
+}
+
+function setBlockStatus(blockElement, status) {
+    blockElement.classList.remove('valid', 'invalid', 'neutral', 'mining');
+    blockElement.classList.add(status);
+}
+
+function updateDifficultyDisplay(value) {
+    currentDifficulty = parseInt(value, 10);
+    document.getElementById('difficultyDisplay').innerText = value;
+
+    const blocks = document.querySelectorAll('.block');
+    blocks.forEach(block => calculateBlockHash(block));
+}
+
 // Event Listener für "input", damit sich der Hash sofort aktualisiert
 document.addEventListener("DOMContentLoaded", function () {
     const inputField = document.getElementById("inputText");
@@ -358,6 +544,11 @@ async function loadPage(url, updateHistory = true) {
         const inputField = document.getElementById("inputText");
         if (inputField) {
             inputField.addEventListener("input", generateHash);
+        }
+
+        const firstBlock = document.querySelector('.block');
+        if (firstBlock) {
+            initBlockchainSimulator();
         }
 
         const newTitle = doc.querySelector('title');
@@ -513,7 +704,13 @@ function generateTableOfContents() {
         }
 
         const tocItem = document.createElement('li');
-        tocItem.classList.add(heading.tagName.toLowerCase() === 'h2' ? 'toc-level-2' : 'toc-level-1');
+        if (heading.tagName.toLowerCase() === 'h2') {
+            tocItem.classList.add('toc-level-2');
+        } else if (heading.tagName.toLowerCase() === 'h3') {
+            tocItem.classList.add('toc-level-3');
+        } else {
+            tocItem.classList.add('toc-level-1');
+        }
 
         const tocLink = document.createElement('a');
         tocLink.href = (isFolderUrl ? 'index.html' : '') + '#' + heading.id;
@@ -620,7 +817,14 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('🔄 DOMContentLoaded: Fülle Tabelle beim direkten Seitenaufruf');
         initializeMinerTable();
     }
+
+    const firstBlock = document.querySelector('.block');
+    if (firstBlock) {
+        initBlockchainSimulator();
+    }
 });
+
+
 
 window.loadPage = loadPage; // Globale Funktion
 

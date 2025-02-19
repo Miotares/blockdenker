@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ Individuelle Meta-Tags für proof-of-work-simulator.html -->
+    <meta name="title" content="Proof-of-Work Blockchain Simulator – Mining und Hashing verstehen | Blockdenker">
+    <meta name="description" content="Verstehe, wie Blöcke in der Blockchain miteinander verkettet sind und wie Mining funktioniert – mit unserem interaktiven Proof-of-Work Simulator.">
+    <meta name="keywords" content="Proof-of-Work Simulator, Blockchain Simulator, Bitcoin Mining, Hashing Erklärung, Nonce, Blockchain Visualisierung, Difficulty, Mining Veranschaulichung">
+    <meta name="author" content="Blockdenker">
+    <meta name="robots" content="index, follow">
+
+    <!-- ✅ Open Graph (für Facebook, LinkedIn & Co.) -->
+    <meta property="og:title" content="Proof-of-Work Blockchain Simulator – Mining und Hashing verstehen">
+    <meta property="og:description" content="Simuliere das Mining und die Verkettung von Blöcken in der Blockchain – erlebe Proof-of-Work live in Aktion.">
+    <meta property="og:image" content="https://blockdenker.de/images/thumbnail-tools.png">
+    <meta property="og:url" content="https://blockdenker.de/pages/tools/proof-of-work-simulator.html">
+    <meta property="og:type" content="website">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Proof-of-Work Blockchain Simulator – Mining und Hashing verstehen">
+    <meta name="twitter:description" content="Interaktiver Blockchain-Simulator: Lerne, wie Mining, Nonce und Difficulty in Bitcoin funktionieren.">
+    <meta name="twitter:image" content="https://blockdenker.de/images/thumbnail-tools.png">
+
+    <title>Proof-of-Work Blockchain Simulator | Blockdenker</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/scripts.js"></script>
+    <script defer src="/scripts/hash-generator.js"></script>
+</head>
+<body>
+
+    <!-- Info-Ticker -->
+    <div id="ticker-container"></div>
+
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="solo-miner-box">
+            <div class="article-container">
+                <article class="article-box">
+                    <section class="section-article">
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+
+                    <h1>Proof-of-Work Blockchain Simulator</h1>
+                    <p>Mit diesem interaktiven Tool kannst du nachvollziehen, wie Blöcke in einer Blockchain miteinander verkettet sind und warum kleine Änderungen alle nachfolgenden Blöcke ungültig machen.</p>
+
+
+                    <label for="difficulty">Difficulty (Anzahl führender Nullen):</label>
+                    <input type="range" id="difficulty" min="0" max="10" value="4" oninput="updateDifficultyDisplay(this.value)">
+                    <span id="difficultyDisplay">4</span>
+            
+                    <div id="blockchain-simulator">
+                        <!-- Block 1 -->
+                        <div class="block" data-index="1">
+                            <h3>Block 1</h3>
+                            <label>Daten:</label>
+                            <textarea class="block-data" rows="3">Alice zahlt Bob 1 BTC&#10;Bob zahlt Mark 1 BTC</textarea>
+                            <label>Nonce:</label>
+                            <input type="text" class="block-nonce" value="0">
+                            <label>Vorheriger Hash:</label>
+                            <input type="text" class="block-prev-hash" value="0000000000000000000" readonly>
+                            <label>Hash:</label>
+                            <input type="text" class="block-hash" readonly>
+                        </div>
+
+                        <!-- Block 2 -->
+                        <div class="block" data-index="2">
+                            <h3>Block 2</h3>
+                            <label>Daten:</label>
+                            <textarea class="block-data" rows="3">Bob zahlt Carol 0.5 BTC&#10;Alex zahlt Alice 0.3 BTC</textarea>
+                            <label>Nonce:</label>
+                            <input type="text" class="block-nonce" value="0">
+                            <label>Vorheriger Hash:</label>
+                            <input type="text" class="block-prev-hash" readonly>
+                            <label>Hash:</label>
+                            <input type="text" class="block-hash" readonly>
+                        </div>
+
+                        <!-- Block 3 -->
+                        <div class="block" data-index="3">
+                            <h3>Block 3</h3>
+                            <label>Daten:</label>
+                            <textarea class="block-data" rows="3">Carol zahlt Dave 0.2 BTC&#10;Mark zahlt Alex 2 BTC</textarea>                            <label>Nonce:</label>
+                            <input type="text" class="block-nonce" value="0">
+                            <label>Vorheriger Hash:</label>
+                            <input type="text" class="block-prev-hash" readonly>
+                            <label>Hash:</label>
+                            <input type="text" class="block-hash" readonly>
+                        </div>
+                    </div>
+
+                    <div id="blockchain-controls" class="blockchain-controls">
+                        <button id="mineAllBtn">Alle Blöcke minen</button>
+                        <button id="stopMiningBtn" disabled>Mining stoppen</button>
+                    </div>
+                    <h2>Was ist Proof-of-Work?</h2>
+                    <p>Proof-of-Work (PoW) ist ein Konsensverfahren, das in der Bitcoin-Blockchain eingesetzt wird, um sicherzustellen, dass neue Blöcke nur dann hinzugefügt werden können, wenn eine rechenintensive Aufgabe – das sogenannte Mining – erfolgreich gelöst wurde. Miner müssen dabei durch Ausprobieren (Brute-Force) eine Zahl, die sogenannte <b>Nonce</b>, finden, sodass der Hash des Blocks eine bestimmte Anzahl führender Nullen enthält.</p>
+                    <p>Der entscheidende Vorteil von PoW: Es macht Manipulationen extrem aufwendig. Würde jemand versuchen, einen alten Block zu ändern, müsste er nicht nur diesen, sondern auch alle nachfolgenden Blöcke neu berechnen – und das schneller als alle anderen Miner zusammen. Dadurch wird die Blockchain manipulationssicher und vertrauenswürdig, auch ohne zentrale Instanz.</p>
+                    <h2>Was ist die Nonce?</h2>
+                    <p>Die Nonce ist eine zufällige Zahl, die Miner während des Mining-Prozesses kontinuierlich verändern, um einen gültigen Hash zu finden. Da der SHA-256-Algorithmus eine komplett unvorhersehbare Ausgabe liefert, müssen Miner Millionen oder sogar Milliarden von möglichen Nonce-Werten durchprobieren, bis der resultierende Hash die geforderte Anzahl führender Nullen enthält.</p>
+                    <p>Die Nonce wird daher als „Number Used Once“ bezeichnet, weil sie für jeden neuen Block einen einzigartigen Wert haben muss. Sobald ein gültiger Hash gefunden wird, bleibt die Nonce für diesen Block unverändert und wird zusammen mit den anderen Blockdaten in die Blockchain aufgenommen.</p>
+                    <p>Das Mining ist somit nichts anderes als ein Wettrennen um die richtige Nonce – und je höher die Difficulty, desto mehr Rechenleistung wird benötigt, um eine passende zu finden.</p>
+                    <h2>Was ist die Difficulty?</h2>
+                    <p>Die führenden Nullen im Hash sind eine Bedingung des Netzwerks, um die Difficulty (Schwierigkeit) des Minings zu steuern. Da der SHA-256-Algorithmus eine zufällige, nicht vorhersagbare Zeichenkette erzeugt, muss ein Miner durch reines Ausprobieren (Brute-Force) eine Nonce finden, die zusammen mit den Blockdaten einen Hash mit der geforderten Anzahl an führenden Nullen ergibt.</p>
+                    <p>Je mehr führende Nullen gefordert sind, desto schwieriger wird es, eine gültige Nonce zu finden. Dies stellt sicher, dass neue Blöcke nur mit einer bestimmten Rechenleistung gefunden werden können und nicht einfach instantan erzeugt werden. In deinem Simulator kannst du die Difficulty erhöhen und beobachten, wie es immer länger dauert, bis ein gültiger Hash gefunden wird.</p>
+                    <p>Die Difficulty wird im Bitcoin-Netzwerk alle 2016 Blöcke automatisch angepasst, um die durchschnittliche Zeit zwischen den Blöcken bei etwa 10 Minuten zu halten. Wenn die Hashrate im Netzwerk steigt, wird die Difficulty erhöht, um die Mining-Geschwindigkeit zu drosseln. Sinkt die Hashrate, wird die Difficulty reduziert, um das Mining zu erleichtern.</p>          
+                    <h2>Wie sind die Blöcke miteinander Verknüpft?</h2>
+                    <p>Die Blöcke sind durch den „Vorherigen Hash“-Wert (Previous Hash) miteinander verbunden. Jeder Block speichert den Hash des vorherigen Blocks, wodurch eine Kette entsteht – die Blockchain.</p>
+                    <p>Der zweite Block enthält den Hash des ersten Blocks als „Vorherigen Hash“ und Der dritte Block enthält wiederum den Hash des zweiten Blocks. Diese Verkettung sorgt dafür, dass die Blockchain unveränderbar ist. Eine Änderung in einem Block zieht sofort eine Kettenreaktion nach sich, wodurch alle folgenden Blöcke ungültig werden.</p>
+                    <p>Dies ist das zentrale Sicherheitsprinzip von Bitcoin: Je länger die Kette wird, desto sicherer ist sie, weil die Rechenleistung, die für eine Manipulation notwendig wäre, exponentiell steigt.</p>
+                    <h2>Was passiert, wenn ich Daten in einem Block ändere?</h2>
+                    <p>Wenn du in einem Block die Daten änderst, verändert sich der gesamte Hash des Blocks. Da der Hash des vorherigen Blocks aber auch im nächsten Block gespeichert ist, werden alle nachfolgenden Blöcke ungültig.</p>
+                    <p>Das zeigt eindrucksvoll, warum Manipulationen so gut wie unmöglich sind: Um eine Änderung durchzuführen, müsste der Angreifer nicht nur einen Block neu minen, sondern auch alle nachfolgenden Blöcke. Und das schneller als das gesamte restliche Netzwerk – was praktisch nicht machbar ist.</p>
+                    <p class="back-link"><a href="/">← Zurück zur Startseite</a></p><hr>
+                    </section>
+                    <p></p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+</body>
+</html>
+
+
