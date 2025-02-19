@@ -2184,7 +2184,9 @@ ul {
 }
 
 input[type="range"] {
-    -webkit-appearance: none;
+    appearance: none; /* Moderne Standard-Eigenschaft */
+    -webkit-appearance: none; /* Safari */
+    -moz-appearance: none; /* Firefox */
     width: 100%;
     height: 5px;
     background: #f7931a;
@@ -2198,7 +2200,7 @@ input[type="range"] {
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #c77108;
+    background: #f7931a;
     border-radius: 50%;
     cursor: pointer;
   }
@@ -2206,7 +2208,7 @@ input[type="range"] {
   input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background: #c77108;
+    background: #f7931a;
     border-radius: 50%;
     cursor: pointer;
   }
@@ -2225,3 +2227,15 @@ input[type="range"] {
 .block.invalid { background-color: #fdd; }   /* Rot */
 .block.valid { background-color: #dff0d8; }  /* Grün */
 .block.mining { background-color: #e0e0e0; } /* Hellgrau */
+
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #f7931a;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+}
