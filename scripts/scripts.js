@@ -8,8 +8,6 @@ async function loadWordlist() {
     return text.split('\n').map(word => word.trim());
 }
 
-let bip39Wordlist = [];
-
 async function initializeWordlist() {
     bip39Wordlist = await loadWordlist();
 }
@@ -94,6 +92,8 @@ function initSeedGenerator() {
         }
     
         seedRawOutput.textContent = seedWords.join(' ');
+        seedOutput.classList.remove('hidden');
+        seedRawOutput.classList.remove('hidden');
     });
 
     // Sicherstellen, dass die 12-Wörter-Version standardmäßig aktiv ist
@@ -742,13 +742,16 @@ async function loadPage(url, updateHistory = true) {
 
         // Seed Generator erkennen und initialisieren
         const seedOutput = document.getElementById('seed-output');
-    if (seedOutput) {
-        console.log('🌱 Seed Generator erkannt – Lade Wortliste und initialisiere...');
-        if (bip39Wordlist.length === 0) {
-            await initializeWordlist(); // Lade die Wortliste nur einmal!
-        }
-        initSeedGenerator(); // Setze Event Listener für Seed Generator
-    }
+        const seedRawOutput = document.getElementById('seed-raw-output');
+
+        const seedContainer = document.getElementById('seed-container');
+        if (seedContainer) {
+            console.log('🌱 Seed Generator erkannt (nach loadPage) – Lade Wortliste und initialisiere...');
+            if (bip39Wordlist.length === 0) {
+                await initializeWordlist();
+            }
+            initSeedGenerator();
+}
 
         // Miner-Tabelle erkennen und initialisieren
         const minerBody = document.getElementById('minerBody');
@@ -991,6 +994,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     initTocClickHandler(); // <-- HIER NEU
     initializeWordlist()
     // initScrollSpy(); // Optional, falls du das nochmal versuchst
+
+    const seedOutput = document.getElementById('seed-output');
+    const seedContainer = document.getElementById('seed-container'); // GANZEN BEREICH prüfen
+    if (seedContainer) {
+        console.log('🌱 Seed Generator erkannt (direkt nach Seitenaufruf) – Lade Wortliste und initialisiere...');
+        if (bip39Wordlist.length === 0) {
+            await initializeWordlist();
+        }
+        initSeedGenerator();
+    }
 
     document.body.classList.add('loaded');
 });

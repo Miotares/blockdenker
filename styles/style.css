@@ -698,10 +698,6 @@ html, body {
     flex-direction: column;
 }
 
-#content {
-    flex: 1; /* Der Hauptinhalt füllt den verfügbaren Platz */
-}
-
 /* Der Footer bleibt unten, wenn der Content nicht ausreicht */
 footer {
     background-color: #1a2c36;
@@ -1890,10 +1886,9 @@ html, body {
 
 #content {
     flex-grow: 1;
-    flex: 1; /* Der Hauptinhalt füllt den verfügbaren Platz */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Inhalte oben halten */
+    justify-content: flex-start;
 }
 
 #footer-container {
@@ -2363,4 +2358,8 @@ input[type="range"] {
     .seed-output-box {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+.hidden {
+    display: none;
 }

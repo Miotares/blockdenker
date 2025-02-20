@@ -46,18 +46,19 @@
                         <p class="back-link"><a href="/pages/tools/">← Zurück zu den Tools</a></p><hr>
 
                     <h1>Bitcoin Seed Generator</h1>
-
+                        <div id="seed-container">
                     <div class="word-count-toggle">
                         <button type="button" id="twelve-words" class="active">12 Wörter</button>
                         <button type="button" id="twenty-four-words">24 Wörter</button>
                     </div>
                     <button id="generate-seed-button">Seed generieren</button>
                     
-                    <div id="seed-output" class="seed-output-box">
+                    <div id="seed-output" class="seed-output-box hidden">
                         Hier erscheint dein Seed...
                     </div>
                     
-                    <p id="seed-raw-output" class="seed-raw-output"> </p>
+                    <p id="seed-raw-output" class="seed-raw-output hidden"> </p>
+                </div>
                     <h2>Warum du diesen Seed nicht benutzen solltest</h2>
                     <p>Die hier generierte Seed Phrase dient ausschließlich zu Demonstrationszwecken. Jeder, der diese Wörter kennt, könnte auf deine Bitcoin zugreifen. Deshalb solltest du für dein echtes Bitcoin-Wallet immer offline und in einer sicheren Umgebung eine Seed Phrase erstellen.</p>
                     <h2>Seed Phrase – Dein einziger Zugang zu deinen Bitcoin</h2>
@@ -90,7 +91,13 @@
 
     <!-- Footer -->
     <div id="footer-container"></div>
-
+    <script>
+        // Prüfen, ob die Seite als Teil der AJAX-Navigation geladen wurde
+        if (!document.getElementById('header-container')) {
+            console.log('🔄 Direkter Aufruf erkannt – Lade komplette Seite nach');
+            loadPage(window.location.pathname, false);
+        }
+    </script>
 </body>
 </html>
 
