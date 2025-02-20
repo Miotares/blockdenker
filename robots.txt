@@ -1,10 +1,10 @@
 User-agent: *
 Disallow: /components/
-Disallow: /scripts/
-Disallow: /styles/
 Disallow: /images/
 Disallow: /templates/
 
+Allow: /scripts/
+Allow: /styles/
 Allow: /pages/
 Allow: /pages/resources/
 Allow: /pages/articles/
