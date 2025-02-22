@@ -116,6 +116,7 @@ footer {
     text-align: center;
     padding-top: 20px;
     font-size: 14px;
+    position: relative; /* oder ganz weglassen */
 }
 
 footer nav ul {
@@ -688,23 +689,6 @@ footer nav ul li a:hover {
 #ticker-link:hover {
     text-decoration: none;
     color: inherit;
-}
-
-/* Stellt sicher, dass der Footer immer unten ist, wenn der Content zu wenig Höhe hat */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Der Footer bleibt unten, wenn der Content nicht ausreicht */
-footer {
-    background-color: #1a2c36;
-    color: white;
-    text-align: center;
-    padding-top: 20px;
-    font-size: 14px;
 }
 
 .donation-container {
@@ -1885,10 +1869,9 @@ html, body {
 }
 
 #content {
-    flex-grow: 1;
+    flex-grow: 1; /* Lässt den Content-Bereich den restlichen Platz einnehmen */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 }
 
 #footer-container {
@@ -2362,4 +2345,104 @@ input[type="range"] {
 
 .hidden {
     display: none;
+}
+
+/* Container für die Überschrift und den Button */
+.latest-articles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Abstand nach unten zu den Artikeln */
+}
+
+/* Linksbündige Überschrift */
+.latest-articles-title {
+    text-align: center; /* Standardmäßig für alle Viewports */
+
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a2c36;
+    margin: 0; /* Kein zusätzlicher Abstand */
+}
+
+/* Button nach rechts */
+.latest-articles-button {
+    margin: 0;
+    padding: 10px 20px;
+    background: #f7931a;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.latest-articles-button:hover {
+    background: #e67e00;
+}
+
+/* Responsive Anpassung für Mobile */
+@media (max-width: 768px) {
+    .latest-articles-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Damit es wirklich mittig ist */
+        text-align: center;
+        width: 100%;
+    }
+
+    .latest-articles-title {
+        width: 100%;
+        text-align: center !important; /* Erzwinge zentrierte Ausrichtung */
+        flex-grow: 0 !important; /* Entferne unnötige Flex-Wachstum */
+    }
+
+    .latest-articles-button {
+        margin-top: 10px;
+    }
+}
+
+.latest-articles-container {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* Standard für Desktop */
+.latest-articles-title {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left; /* Standard für Desktop */
+}
+
+
+.latest-articles-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    white-space: nowrap;
+    background: #f7931a;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.latest-articles-button:hover {
+    background: #e67e00;
+}
+
+.latest-articles-divider {
+    width: 100%;
+    max-width: 1200px;  /* Gleicht sich an den Container an */
+    height: 2px;        /* Dicke der Linie */
+    background-color: #e0e0e0;  /* Farbe der Linie (passend zur Markierung) */
+    border: none;
+    margin: 20px auto 20px;  /* Abstand zur Überschrift und den Artikeln */
 }

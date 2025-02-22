@@ -705,6 +705,7 @@ async function loadPage(url, updateHistory = true) {
         }
 
         document.getElementById("content").innerHTML = newContent.innerHTML;
+        
 
         // Setze neuen Titel
         const newTitle = doc.querySelector('title');
