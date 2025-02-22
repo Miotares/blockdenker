@@ -2444,5 +2444,10 @@ input[type="range"] {
     height: 2px;        /* Dicke der Linie */
     background-color: #e0e0e0;  /* Farbe der Linie (passend zur Markierung) */
     border: none;
-    margin: 20px auto 20px;  /* Abstand zur Überschrift und den Artikeln */
+    margin: 20px auto 20px;  /*Abstand zur Überschrift und den Artikeln */
+}
+
+.textbox p {
+    width: 100%;
+    text-align: center;
 }

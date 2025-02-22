@@ -59,28 +59,62 @@
                     
                     <p id="seed-raw-output" class="seed-raw-output hidden"> </p>
                 </div>
-                    <h2>Warum du diesen Seed nicht benutzen solltest</h2>
-                    <p>Die hier generierte Seed Phrase dient ausschließlich zu Demonstrationszwecken. Jeder, der diese Wörter kennt, könnte auf deine Bitcoin zugreifen. Deshalb solltest du für dein echtes Bitcoin-Wallet immer offline und in einer sicheren Umgebung eine Seed Phrase erstellen.</p>
-                    <h2>Seed Phrase – Dein einziger Zugang zu deinen Bitcoin</h2>
-                    <p>Deine Seed Phrase ist der Schlüssel zu deinem Vermögen. Verlierst du sie, verlierst du den Zugriff auf dein Wallet – für immer. Niemand kann dir helfen, deine Bitcoin wiederherzustellen. Sichere deine Wörter also gut und bewahre sie an einem sicheren Ort auf, am besten offline und physisch (z.B. auf Metall graviert oder auf Papier, fern von Feuchtigkeit und Feuer).</p>
-                    <h2>Seed online generieren – Wie riskant ist das?</h2>
-                    <p>Wenn du diesen Seed auf einem unsicheren Gerät oder in einem unsicheren Netzwerk generierst, könnten Hacker oder Schadsoftware deine Seed Phrase mitlesen. Besser: Erstelle deine Seed Phrase offline, z. B. mit einem dedizierten Gerät wie einem Hardware Wallet oder auf einem isolierten Rechner.</p>
-                    <h2>So generierst du einen sicheren Seed offline</h2>
-                    <p>Wenn du eine echte Wallet erstellen willst, mach es so:</p>
-                    <ol>
-                        <li>Trenne deinen Computer vom Internet.</li>
-                        <li>Nutze ein Open-Source-Tool wie Electrum oder ein Hardware Wallet.</li>
-                        <li>Schreibe die Wörter von Hand auf Papier oder präge sie auf Metall.</li>
-                        <li>Keine Screenshots, keine Fotos, kein Cloud-Speicher!</li>
-                    </ol>
-                    <h2>Was ist, wenn ich meine Seed Phrase verliere?</h2>
-                    <p>Verlierst du deine Seed Phrase, verlierst du den Zugang zu deinen Bitcoin – dauerhaft. Das Bitcoin-Netzwerk kennt keine Zurücksetzungsmöglichkeit! Deshalb gilt: Mehrfach sichern – aber nie digital, immer offline und sicher verwahrt.</p>
-                    <h2>Was ist BIP39?</h2>
-                    <p>Der Seed Generator basiert auf dem BIP39-Standard.
-                        Dieser sorgt dafür, dass deine Seed Phrase aus 2048 englischen Wörtern besteht.
-                        Jede Kombination dieser Wörter kann in einen privaten Schlüssel umgewandelt werden, der den Zugang zu deinen Bitcoin ermöglicht.
-                        Deshalb ist jeder Seed einzigartig und hochgradig sicher, solange er geheim bleibt.</p>
+                <h2>Warum du diesen Seed nicht benutzen solltest</h2>
+<p>Die hier generierte Seed Phrase dient ausschließlich zu Demonstrationszwecken. Sie ist nicht für die tatsächliche Nutzung in einer echten Bitcoin-Wallet gedacht. Jeder, der diese Wörter kennt, kann uneingeschränkt auf dein Bitcoin-Wallet zugreifen und dein Guthaben entwenden.</p>
+<p><b>Not your keys, not your coins!</b> Bitcoin funktioniert ohne zentrale Institutionen – das bedeutet, dass du die alleinige Verantwortung für dein Geld trägst. Falls jemand anderes Zugriff auf deine Seed Phrase bekommt, kann er deine Coins einfach auf eine andere Adresse verschieben, ohne dass du etwas dagegen tun kannst.</p>
+<p>Deshalb ist es essenziell, dass du deine echte Seed Phrase niemals digital speicherst oder online generierst. Benutze stattdessen einen sicheren Offline-Prozess zur Generierung und Aufbewahrung.</p>
 
+<h2>Seed Phrase – Dein einziger Zugang zu deinen Bitcoin</h2>
+<p>Die Seed Phrase ist ein einzigartiger Satz aus 12 oder 24 Wörtern, der als Backup für dein Bitcoin-Wallet dient. Mit dieser Phrase kannst du dein Wallet auf einem beliebigen Gerät wiederherstellen – falls dein Handy, Computer oder Hardware-Wallet verloren geht oder beschädigt wird.</p>
+<p>Wenn du deine Seed Phrase verlierst, verlierst du den Zugriff auf dein gesamtes Guthaben – und niemand kann sie wiederherstellen. Es gibt keine Bank oder Support-Hotline, die dir helfen kann.</p>
+<p><b>Backup-Tipps:</b></p>
+<ul>
+    <li>Schreibe die Seed Phrase auf Papier und bewahre sie an einem sicheren Ort auf, z. B. in einem Safe.</li>
+    <li>Nutze eine gravierte Metallplatte zur Langzeitlagerung – Papier kann verbrennen oder zerfallen.</li>
+    <li>Speichere die Seed Phrase niemals in digitalen Notizen, Screenshots oder Cloud-Speichern.</li>
+</ul>
+
+<h2>Seed online generieren – Wie riskant ist das?</h2>
+<p>Ein Seed sollte niemals online generiert werden, da er in einer unsicheren Umgebung von Dritten abgefangen werden könnte. Malware, Keylogger oder kompromittierte Browser-Erweiterungen können die generierte Seed Phrase auslesen und an Angreifer weiterleiten.</p>
+<p>Häufige Risiken:</p>
+<ul>
+    <li><b>Keylogger:</b> Schadsoftware kann deine Eingaben aufzeichnen und die Seed Phrase direkt an Hacker senden.</li>
+    <li><b>Phishing-Websites:</b> Manche Fake-Websites geben sich als Wallets aus und fordern dich auf, deine Seed Phrase einzugeben.</li>
+    <li><b>Cloud-Speicher:</b> Wer seine Seed in Google Drive oder iCloud speichert, setzt sich der Gefahr aus, dass sie durch Hacks oder Datenlecks gestohlen wird.</li>
+</ul>
+<p>Um absolute Sicherheit zu gewährleisten, sollte die Seed Phrase stets offline und in einer isolierten Umgebung erzeugt werden.</p>
+
+<h2>So generierst du einen sicheren Seed offline</h2>
+<p>Um deine Seed Phrase sicher zu generieren, solltest du folgende Schritte befolgen:</p>
+<ol>
+    <li>Verwende ein sicheres Gerät, das frei von Malware ist. Am besten eignet sich ein frisch installiertes Linux-Live-System.</li>
+    <li>Trenne den Computer vollständig vom Internet, um jegliche externe Zugriffe zu vermeiden.</li>
+    <li>Nutze ein vertrauenswürdiges Open-Source-Tool zur Seed-Generierung, wie Electrum oder ein Hardware-Wallet.</li>
+    <li>Schreibe die Seed Phrase manuell auf ein Stück Papier oder gravierte sie auf eine Metallplatte.</li>
+    <li>Speichere die Phrase an einem sicheren Ort – zum Beispiel in einem Tresor oder Bankschließfach.</li>
+</ol>
+<p>Durch diesen Prozess kannst du sicherstellen, dass deine Seed Phrase niemals digital kompromittiert wird.</p>
+
+<h2>Was ist, wenn ich meine Seed Phrase verliere?</h2>
+<p>Falls du deine Seed Phrase verlierst, gibt es <b>keine Möglichkeit</b>, sie wiederherzustellen. Bitcoin ist so konzipiert, dass niemand außer dir Zugriff auf deine Coins hat. Falls du deine Wallet zurücksetzen musst, aber die Seed Phrase nicht mehr hast, sind deine Bitcoin unwiederbringlich verloren.</p>
+<p>Deshalb ist es ratsam, die Seed Phrase mehrfach zu sichern und an sicheren Orten aufzubewahren.</p>
+<p><b>Gute Backup-Strategien:</b></p>
+<ul>
+    <li>Speichere eine Kopie der Seed Phrase an zwei physischen Orten, z. B. zu Hause und in einem Schließfach.</li>
+    <li>Nutze eine Metallplatte für dauerhafte Speicherung – feuer- und wasserfest.</li>
+    <li>Vermeide digitale Speicherung unter allen Umständen.</li>
+</ul>
+
+<h2>Was ist BIP39?</h2>
+<p>BIP39 (Bitcoin Improvement Proposal 39) ist der Standard, auf dem die meisten modernen Wallets basieren. Eine BIP39-Seed Phrase besteht aus einer bestimmten Anzahl von Wörtern (12 oder 24), die aus einer vordefinierten Wortliste von 2048 Begriffen stammen.</p>
+<p>Die Seed Phrase wird mathematisch in einen privaten Schlüssel umgewandelt, der dann für das Signieren von Transaktionen und den Zugriff auf dein Wallet verwendet wird.</p>
+<p><b>Wichtige Fakten zu BIP39:</b></p>
+<ul>
+    <li>BIP39 ermöglicht es, mehrere Wallet-Adressen mit nur einer Seed Phrase zu generieren.</li>
+    <li>Jede Wallet (z. B. Ledger, Trezor, Coldcard, Electrum) kann eine BIP39-Seed verwenden.</li>
+    <li>Die Reihenfolge der Wörter ist entscheidend – bereits eine kleine Abweichung macht die Seed ungültig.</li>
+</ul>
+<p>BIP39 sorgt für eine einheitliche und sichere Methode zur Erstellung und Wiederherstellung von Wallets, weshalb dieser Standard in fast allen modernen Bitcoin-Wallets verwendet wird.</p>
 
                         <p class="back-link"><a href="/pages/tools/">← Zurück zu den Tools</a></p><hr>
                     </section>
